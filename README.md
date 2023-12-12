@@ -1,4 +1,4 @@
-# WorkshelfFrontend
+# [WorkshelfFrontend](https://master.d1ub3efs995f8a.amplifyapp.com/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
