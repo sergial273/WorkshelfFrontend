@@ -1,3 +1,16 @@
-@import 'primeng/resources/themes/saga-blue/theme.css';
-@import 'primeng/resources/primeng.min.css';
-@import 'primeicons/primeicons.css';
+.bg-magenta {
+    background-color: #e20074;
+}
+
+a{
+    color: aliceblue;
+}
+
+i{
+}
+
+.bi{
+    height: 30px;
+    width: 30px;
+}
+

@@ -10,5 +10,9 @@ export const routes: Routes = [
     {
         path:'registration',
         component:RegistrationComponent
+    },
+    {
+        path:'signin',
+        component:SignInComponent
     }
 ];

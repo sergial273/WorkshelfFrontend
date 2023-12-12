@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PrimeIcons } from 'primeng/api';
 import { MenubarModule } from 'primeng/menubar';
 
 
