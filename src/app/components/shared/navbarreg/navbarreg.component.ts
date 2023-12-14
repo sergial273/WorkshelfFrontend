@@ -8,11 +8,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './navbarreg.component.html',
   styleUrl: './navbarreg.component.css'
 })
-export class NavbarregComponent implements OnInit{
+export class NavbarregComponent{
 
-  items: any[] | undefined;
-
-  ngOnInit() {
-
-  }
 }
