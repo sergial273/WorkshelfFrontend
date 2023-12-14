@@ -13,9 +13,7 @@ import { FooterComponent } from "../shared/footer/footer.component";
   imports: [NavbarregComponent, FormsModule, FooterComponent],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css',
-
-
-
+})
 
 export class RegistrationComponent {
 
