@@ -1,17 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { NavbarregComponent } from '../shared/navbarreg/navbarreg.component';
+
 import { AuthService } from '../../_services/auth.service';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { FooterComponent } from "../shared/footer/footer.component";
 
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [NavbarregComponent, FormsModule],
+  imports: [NavbarregComponent, FormsModule, FooterComponent],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css',
-})
+
+
+
 
 export class RegistrationComponent {
 
