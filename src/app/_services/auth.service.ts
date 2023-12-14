@@ -18,26 +18,16 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  login(username: string, password: string): Observable<any> {
+  login(userName: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'login', {
-        username,
+        userName,
         password,
       }, httpOptions
     );
   }
 
   register(username: string, email: string, password: string): Observable<any> {
-    console.log("registter from auth service")
-    const ROLE = 2;
-    var id : number = ROLE;
-    console.log({
-      username,
-      email,
-      password,
-      "role" :{
-        id
-      }
-    })
+    var id : number = 2;
     return this.http.post(
 
       AUTH_API + 'user/add',
@@ -46,8 +36,7 @@ export class AuthService {
         email,
         password,
         "role" :{
-          id
-        }
+          id        }
       }, httpOptions 
     );
   }
