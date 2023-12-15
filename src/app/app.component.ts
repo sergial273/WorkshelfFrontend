@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { MenubarModule } from 'primeng/menubar';
-import {MenuItem} from 'primeng/api';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { TokenStorageService } from './_services/token-storage.service';
 import { FooterComponent } from './components/shared/footer/footer.component';
