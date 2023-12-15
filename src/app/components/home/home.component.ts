@@ -13,21 +13,36 @@ import { BookModule } from '../../models/book/book.module';
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
 })
-export class HomeComponent implements OnInit{
+export class HomeComponent implements OnInit {
+
+    currentPage: number = 0;
+    pageSize: number = 8;
 
     books: BookModule[] = [];
 
-    constructor(private bookservice:BookserviceService){}
+    constructor(private bookservice: BookserviceService) { }
 
     ngOnInit(): void {
         this.getAllBooks();
         console.log(this.books);
     }
     getAllBooks() {
-        this.bookservice.getBooks().subscribe((data) => {
-            console.log(data);
-            this.books = data;
+        this.bookservice.getBooks(this.currentPage, this.pageSize).subscribe((books) => {
+            this.books = books;
         });
     }
 
+    previousPage() {
+        if (this.currentPage > 0) {
+            this.currentPage--;
+            this.getAllBooks();
+        }
+    }
+
+    nextPage() {
+        if (this.books.length === this.pageSize) {
+            this.currentPage++;
+            this.getAllBooks();
+        }
+    }
 }
