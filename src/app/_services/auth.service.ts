@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders } from '@angular/common/http';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { TokenStorageService } from './token-storage.service';
 
 const AUTH_API = 'https://backendworkshelf-production.up.railway.app/';
 
@@ -15,9 +16,11 @@ const httpOptions = {
 })
 
 export class AuthService {
-
-  constructor(private http: HttpClient) { }
-
+  
+  private authToken!: string | null;
+  
+  constructor(private http: HttpClient) {}
+  
   login(userName: string, password: string): Observable<any> {
     return this.http.post(AUTH_API + 'login', {
         userName,
