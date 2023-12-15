@@ -43,9 +43,6 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         this.tokenStorage.saveToken(data);
         this.tokenStorage.saveUser(username);
-        console.log(`data from login component ${JSON.stringify(data)}`)
-        console.log(`data from login component ${JSON.stringify(data.token)}`)
-
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;

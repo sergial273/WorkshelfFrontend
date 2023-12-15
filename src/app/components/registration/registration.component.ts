@@ -27,20 +27,16 @@ export class RegistrationComponent {
   isSignUpFailed = false;
   errorMessage = '';
 
-  constructor(private authService: AuthService, private router: Router) {
-    console.log("registration component")
-  }
+  constructor(private authService: AuthService, private router: Router) {}
 
 
   onSubmit(): void {
     const { username, email, password } = this.form;
     this.authService.register(username, email, password).subscribe(
       (data: any) => {
-        console.log(data);
         this.isSuccessful = true;
         this.isSignUpFailed = false;
         this.router.navigate(['/login']);
-        
       },
       (err: any) => {
         this.errorMessage = err.error.message;
