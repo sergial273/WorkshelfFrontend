@@ -3,12 +3,8 @@ import { UserService } from './user.service';
 import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AUTH_API, TOKEN_KEY, USER_KEY } from '../api-constants';
 
-
-const AUTH_API = 'https://backendworkshelf-production.up.railway.app/';
-
-const TOKEN_KEY = 'auth_token';
-const USER_KEY = 'auth-user';
 
 @Injectable({
   providedIn: 'root',
