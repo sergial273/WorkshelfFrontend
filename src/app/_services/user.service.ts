@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 
 const AUTH_API = 'https://backendworkshelf-production.up.railway.app/';
 
+// 'Authorization': `Bearer ${this.authToken}`
+
 @Injectable({
   providedIn: 'root'
 })
