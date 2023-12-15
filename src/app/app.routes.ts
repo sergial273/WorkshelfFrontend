@@ -7,6 +7,7 @@ import { UserreservationsComponent } from './components/user/userreservations/us
 import { UserbookshareComponent } from './components/user/userbookshare/userbookshare.component';
 import { UseraddbookComponent } from './components/user/useraddbook/useraddbook.component';
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
+import { AdminComponent } from './components/admin/admin.component';
 
 export const routes: Routes = [
     {
@@ -41,5 +42,9 @@ export const routes: Routes = [
     {
         path:'useraddbook',
         component:UseraddbookComponent
+    },
+    {
+        path:'admin',
+        component:AdminComponent
     }
 ];
