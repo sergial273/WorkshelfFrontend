@@ -1,0 +1,44 @@
+body {
+    background-color: #fff;
+  }
+  
+header{
+    text-align: center;
+}
+  .container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  h1 {
+    font-size: 8em;
+    margin-bottom: 0;
+    color: #e20074;
+  }
+  
+  p {
+    font-size: 2em;
+    color: #13561A;
+  }
+  
+  form {
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+
+  hr{
+    margin-top: 0;
+    border: 1px solid black;
+  }
+
+button{
+  background-color: #e20074;
+  color: aliceblue;
+}

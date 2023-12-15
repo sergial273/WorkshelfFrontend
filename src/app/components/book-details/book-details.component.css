@@ -1,0 +1,30 @@
+
+.asd{
+    background-color: #f8f9fa;
+    height: 50px;
+}
+
+.row{
+    background-color: #f8f9fa;
+}
+
+.container{
+    background-color: #f8f9fa;
+}
+
+.col-xl-5{
+    margin-left: 100px;
+}
+
+a{
+    margin-right: 2%;
+    margin-top: 10px;
+}
+
+html{
+    background-color: #f8f9fa;
+}
+
+.jumbotron{
+    height: 140vh;
+}
