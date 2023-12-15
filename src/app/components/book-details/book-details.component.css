@@ -1,30 +1,42 @@
+#ht-tm-jumbotron {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-.asd{
+.jumbotron {
+    padding-top: 0;
     background-color: #f8f9fa;
-    height: 50px;
+    color: #343a40;
+    margin-bottom: 0;
+    border-radius: 0;
+}
+
+.img {
+    width: 100%;
+}
+
+.ht-tm-header {
+    text-align: center;
+}
+
+.ht-tm-header h1 {
+    font-size: 4rem;
+}
+
+.text-merriweather {
+    font-family: 'Merriweather', serif;
+}
+
+.text-oswald {
+    font-family: 'Oswald', sans-serif;
+}
+
+.btn-wide {
+    width: 100%;
 }
 
 .row{
-    background-color: #f8f9fa;
-}
-
-.container{
-    background-color: #f8f9fa;
-}
-
-.col-xl-5{
-    margin-left: 100px;
-}
-
-a{
-    margin-right: 2%;
-    margin-top: 10px;
-}
-
-html{
-    background-color: #f8f9fa;
-}
-
-.jumbotron{
-    height: 140vh;
+    align-items: center;
+    justify-content: center;
 }

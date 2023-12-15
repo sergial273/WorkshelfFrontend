@@ -6,11 +6,12 @@ import { Observable } from 'rxjs';
 import { BookserviceService } from '../../_services/book/bookservice.service';
 import { Router, RouterLink } from '@angular/router';
 import { Book } from '../../models/book/book.model';
+import { DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [NavbarComponent, FooterComponent, RouterLink],
+    imports: [NavbarComponent, FooterComponent, RouterLink, DatePipe],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
 })
@@ -28,7 +29,7 @@ export class HomeComponent implements OnInit {
         console.log(this.books);
     }
     getAllBooks() {
-        this.bookservice.getBooks(this.currentPage, this.pageSize).subscribe((books) => {
+        this.bookservice.getAllBooks(this.currentPage, this.pageSize).subscribe((books) => {
             this.books = books;
         });
     }

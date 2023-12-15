@@ -12,7 +12,7 @@ export class BookserviceService {
 
   constructor(private http: HttpClient) { }
 
-  getBooks(page: number, pageSize: number): Observable<Book[]> {
+  getAllBooks(page: number, pageSize: number): Observable<Book[]> {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('pageSize', pageSize.toString());
