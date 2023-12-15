@@ -40,6 +40,7 @@ export class TokenStorageService {
         console.error('Error obteniendo el usuario por correo electrónico:', error);
       }
       );
+    
     }
     
     public getUser(): any {
