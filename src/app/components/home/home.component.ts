@@ -4,12 +4,13 @@ import { FooterComponent } from "../shared/footer/footer.component";
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BookserviceService } from '../../_services/book/bookservice.service';
-import { BookModule } from '../../models/book/book.module';
+import { Router, RouterLink } from '@angular/router';
+import { Book } from '../../models/book/book.model';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [NavbarComponent, FooterComponent, BookModule],
+    imports: [NavbarComponent, FooterComponent, RouterLink],
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
 })
@@ -18,9 +19,9 @@ export class HomeComponent implements OnInit {
     currentPage: number = 0;
     pageSize: number = 8;
 
-    books: BookModule[] = [];
+    books: Book[] = [];
 
-    constructor(private bookservice: BookserviceService) { }
+    constructor(private bookservice: BookserviceService, private router: Router) { }
 
     ngOnInit(): void {
         this.getAllBooks();
@@ -44,5 +45,9 @@ export class HomeComponent implements OnInit {
             this.currentPage++;
             this.getAllBooks();
         }
+    }
+
+    goToBookDetails(id: number) {
+        this.router.navigate(['/book/detail/', id]);
     }
 }
