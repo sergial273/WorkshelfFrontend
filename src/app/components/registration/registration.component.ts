@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NavbarregComponent } from '../shared/navbarreg/navbarreg.component';
 
 import { AuthService } from '../../_services/auth.service';
 import { FormsModule } from '@angular/forms';
@@ -10,7 +9,7 @@ import { FooterComponent } from "../shared/footer/footer.component";
 @Component({
   selector: 'app-registration',
   standalone: true,
-  imports: [NavbarregComponent, FormsModule, FooterComponent],
+  imports: [FormsModule, FooterComponent],
   templateUrl: './registration.component.html',
   styleUrl: './registration.component.css',
 })
