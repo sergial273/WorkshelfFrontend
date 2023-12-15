@@ -5,12 +5,13 @@ import { MenubarModule } from 'primeng/menubar';
 import {MenuItem} from 'primeng/api';
 import { NavbarComponent } from './components/shared/navbar/navbar.component';
 import { TokenStorageService } from './_services/token-storage.service';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, NavbarComponent],
+  imports: [CommonModule, RouterOutlet, NavbarComponent,FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

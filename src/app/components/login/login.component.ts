@@ -1,4 +1,3 @@
-import { NavbarlogComponent } from '../shared/navbarlog/navbarlog.component';
 import { FooterComponent } from '../shared/footer/footer.component';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../_services/auth.service';
@@ -10,7 +9,7 @@ import { JsonPipe } from '@angular/common';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NavbarlogComponent,FormsModule, FooterComponent],
+  imports: [FormsModule, FooterComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })

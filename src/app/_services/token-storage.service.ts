@@ -31,6 +31,7 @@ export class TokenStorageService {
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
   
+
   public getRoles(): string | null {
     return window.sessionStorage.getItem(USER_ROLES_KEY);
   }
