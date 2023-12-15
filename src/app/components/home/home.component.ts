@@ -24,7 +24,6 @@ export class HomeComponent implements OnInit {
 
     ngOnInit(): void {
         this.getAllBooks();
-        console.log(this.books);
     }
     getAllBooks() {
         this.bookservice.getBooks(this.currentPage, this.pageSize).subscribe((books) => {

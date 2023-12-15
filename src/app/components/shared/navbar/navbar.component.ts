@@ -31,4 +31,16 @@ export class NavbarComponent implements OnInit{
     this.token.signOut();
     this.router.navigate(['/home']);
   }
+
+  isAdmin():boolean{
+    const user = this.token.getRoles();
+    if (user != null){
+      const role = JSON.parse(user)
+      if (role.roleName==="ADMIN"){
+        return true
+      }
+      else return false
+    }
+    return false
+  }
 }
