@@ -9,6 +9,7 @@ const AUTH_API = 'https://backendworkshelf-production.up.railway.app/';
 
 const TOKEN_KEY = 'auth_token';
 const USER_KEY = 'auth-user';
+const USER_ROLES_KEY = 'user-roles';
 
 @Injectable({
   providedIn: 'root',
@@ -30,19 +31,27 @@ export class TokenStorageService {
     return window.sessionStorage.getItem(TOKEN_KEY);
   }
   
-  public saveUser(email:string): void {
-    this.getUserByEmail(email).subscribe(
-      (user) => {
-        window.sessionStorage.removeItem(USER_KEY);
-        window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
-      },
-      (error) => {
-        console.error('Error obteniendo el usuario por correo electrónico:', error);
-      }
-      );
+  public getRoles(): string | null {
+    return window.sessionStorage.getItem(USER_ROLES_KEY);
+  }
+  
+  public saveRoles(roles: any): void {
+    window.sessionStorage.removeItem(USER_ROLES_KEY);
+    window.sessionStorage.setItem(USER_ROLES_KEY, JSON.stringify(roles));
+  }
+
+  public async saveUser(email:string): Promise<void>  {
+    try {
+      const user = await this.getUserByEmail(email).toPromise();
+      window.sessionStorage.removeItem(USER_KEY);
+      window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
+    } catch (error) {
+      console.error('Error obteniendo el usuario por correo electrónico:', error);
+      throw error;
     }
+  }
     
-    public getUser(): any {
+  public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     if (user) {
       return JSON.parse(user);
