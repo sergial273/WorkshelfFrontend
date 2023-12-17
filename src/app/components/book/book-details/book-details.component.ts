@@ -1,13 +1,13 @@
 import { Component, OnInit, Pipe } from '@angular/core';
-import { FooterComponent } from "../../shared/footer/footer.component";
-import { BookserviceService } from '../../../_services/book/bookservice.service';
 import { ActivatedRoute } from '@angular/router';
-import { Book } from '../../../models/book/book.model';
 import { DatePipe } from '@angular/common';
-import { AuthService } from '../../_services/auth.service';
-import { TokenStorageService } from '../../_services/token-storage.service';
-import { Rating } from '../../models/rating/rating.model';
-import { RatingService } from '../../_services/rating/rating.service';
+import { FooterComponent } from '../../shared/footer/footer.component';
+import { Book } from '../../../models/book/book.model';
+import { Rating } from '../../../models/rating/rating.model';
+import { BookserviceService } from '../../../_services/book/bookservice.service';
+import { AuthService } from '../../../_services/auth.service';
+import { TokenStorageService } from '../../../_services/token-storage.service';
+import { RatingService } from '../../../_services/rating/rating.service';
 
 @Component({
     selector: 'app-book-details',
