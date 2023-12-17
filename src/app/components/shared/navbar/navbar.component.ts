@@ -11,23 +11,29 @@ import {TokenStorageService} from '../../../_services/token-storage.service'
 })
 export class NavbarComponent implements OnInit{
 
+  user: any;
+
   constructor(public router: Router, private token:TokenStorageService) {
   }
 
   ngOnInit() {
+    console.log(this.user)
   }
-
+  
   isRegistered():boolean{
     if(this.token.getToken() != null){
+      this.user = this.token.getUser();
+      console.log(this.user)
       return true;
     }
     else{
       return false;
     }
-
+    
   }
-
+  
   logout():void{
+    this.user = null;
     this.token.signOut();
     this.router.navigate(['/home']);
   }
