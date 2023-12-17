@@ -2,12 +2,13 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
-import { BookDetailsComponent } from './components/book-details/book-details.component';
+import { BookDetailsComponent } from './components/book/book-details/book-details.component';
 import { UserreservationsComponent } from './components/user/userreservations/userreservations.component';
 import { UserbookshareComponent } from './components/user/userbookshare/userbookshare.component';
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { BookAddComponent } from './book/book-add/book-add.component';
+import { BookAddComponent } from './components/book/book-add/book-add.component';
+import { EditorialAddComponent } from './components/editorial/editorial-add/editorial-add.component';
 
 export const routes: Routes = [
     {
@@ -41,6 +42,10 @@ export const routes: Routes = [
     {
         path:'book/add',
         component: BookAddComponent
+    },
+    {
+        path:'editorial/add',
+        component: EditorialAddComponent
     },
     {
         path:'admin',
