@@ -8,6 +8,8 @@ import { UserbookshareComponent } from './components/user/userbookshare/userbook
 import { UserDetailsComponent } from './components/user/user-details/user-details.component';
 import { AdminComponent } from './components/admin/admin.component';
 import { BookAddComponent } from './book/book-add/book-add.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AdminGuard } from './guards/admin.guard';
 
 export const routes: Routes = [
     {
@@ -44,6 +46,15 @@ export const routes: Routes = [
     },
     {
         path:'admin',
+        canActivate : [AdminGuard],
         component:AdminComponent
-    }
+    },
+    {
+        path:'notfound',
+        component:NotFoundComponent
+    },
+    {
+        path:'**',
+        redirectTo: '/notfound'
+    },
 ];
