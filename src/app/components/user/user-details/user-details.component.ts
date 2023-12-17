@@ -30,7 +30,6 @@ export class UserDetailsComponent implements OnInit {
       email: this.currentUser.email,
       password: this.currentUser.password
     });
-    console.log(JSON.stringify(this.token.getUser()))
   }
 
   onSubmit() {
