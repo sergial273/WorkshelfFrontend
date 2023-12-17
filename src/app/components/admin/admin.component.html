@@ -1,47 +1,218 @@
-
-
-  <div class="d-flex">
-    <div class="d-flex flex-column flex-shrink-0 p-3 bg-light" style="width: 280px; height: 100vh; position: fixed;">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none">
-          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
-          <span class="fs-4">ADMIN MENU</span>
+<div class="d-flex">
+  <div
+    class="d-flex flex-column flex-shrink-0 p-3 bg-light"
+    style="width: 280px; height: 100vh"
+  >
+    <a
+      class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-dark text-decoration-none"
+    >
+      <svg class="bi me-2" width="40" height="32"></svg>
+      <span class="fs-4">ADMIN MENU</span>
+    </a>
+    <hr />
+    <ul class="nav nav-pills flex-column mb-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link apuntar"
+          [class.active]="activeButton === 1"
+          [class.link-dark]="activeButton !== 1"
+          [style.background-color]="activeButton === 1 ? '#e20074' : ''"
+          (click)="test(1)"
+        >
+          <svg class="bi me-2" width="16" height="16"></svg>
+          Books
         </a>
-        <hr>
-        <ul class="nav nav-pills flex-column mb-auto">
-          <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
-              Home
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link link-dark">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
-              Dashboard
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link link-dark">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
-              Orders
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link link-dark">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
-              Products
-            </a>
-          </li>
-          <li>
-            <a href="#" class="nav-link link-dark">
-              <svg class="bi me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
-              Customers
-            </a>
-          </li>
-        </ul>
-      </div>
-  
-   
+      </li>
+      <li>
+        <a
+          class="nav-link apuntar"
+          [class.active]="activeButton === 2"
+          [class.link-dark]="activeButton !== 2"
+          [style.background-color]="activeButton === 2 ? '#e20074' : ''"
+          (click)="test(2)"
+        >
+          <svg class="bi me-2" width="16" height="16"></svg>
+          Reservations
+        </a>
+      </li>
+      <li>
+        <a
+          class="nav-link apuntar"
+          [class.active]="activeButton === 3"
+          [class.link-dark]="activeButton !== 3"
+          [style.background-color]="activeButton === 3 ? '#e20074' : ''"
+          (click)="test(3)"
+        >
+          <svg class="bi me-2" width="16" height="16"></svg>
+          Users
+        </a>
+      </li>
+      <li>
+        <a
+          class="nav-link apuntar"
+          [class.active]="activeButton === 4"
+          [class.link-dark]="activeButton !== 4"
+          [style.background-color]="activeButton === 4 ? '#e20074' : ''"
+          (click)="test(4)"
+        >
+          <svg class="bi me-2" width="16" height="16"></svg>
+          Editorials
+        </a>
+      </li>
+    </ul>
   </div>
-  
-  
+  @if (!loading) {
+  <div class="d-flex flex-column flex-shrink-0 p-3 bg-light flex-grow-1">
+    <div class="container">
+      <table class="table">
+        @if(activeButton === 1){
+        <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Title</th>
+            <th scope="col">Booking Status</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (book of books; track $index) {
+          <tr>
+            <th scope="row">{{ book.id }}</th>
+            <td>{{ book.title }}</td>
+            <td>{{ book.bookingStatus }}</td>
+            <td>
+              <button
+                [routerLink]="['/details', book.id]"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-primary gap"
+              >
+                Details
+              </button>
+              <button
+                (click)="deleteBook(book.id, book.bookingStatus)"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+        }
+        @else if (activeButton === 2) {
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">User</th>
+            <th scope="col">Book</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (res of reservations; track $index) {
+          <tr>
+            <th scope="row">{{ res.id }}</th>
+            <td>{{ res.user.username }}</td>
+            <td>{{ res.book.title }}</td>
+            <td>
+              <button
+                (click)="deleteReservation(res.id)"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+        }
+        @else if (activeButton === 3) {
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users; track $index) {
+          <tr>
+            <th scope="row">{{ user.userId }}</th>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role.roleName }}</td>
+            <td>
+              <button
+                (click)="deleteUser(user.userId)"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+        }
+        @else if (activeButton === 4) {
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (edit of editorials; track $index) {
+          <tr>
+            <th scope="row">{{ edit.id }}</th>
+            <td>{{ edit.editorialName }}</td>
+            <td>
+              <button
+                (click)="deleteUser(edit.id)"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+        }
+      </table>
+    </div>
+    <div class="d-flex justify-content-center mt-3 mb-5">
+      <button
+        type="button"
+        class="btn btn-primary me-2 purple"
+        (click)="previousPage()"
+      >
+        Previous
+      </button>
+      <span class="align-self-center">{{ currentPage }}</span>
+      <button
+        type="button"
+        class="btn btn-primary ms-2 purple"
+        (click)="nextPage()"
+      >
+        Next
+      </button>
+    </div>
+  </div>
+  }
+  @else {
+    <div class="d-flex justify-content-center test">
+      <div class="spinner-border" role="status">
+        <span class="sr-only" id="loading"></span>
+      </div>
+    </div>
+  }
+</div>
