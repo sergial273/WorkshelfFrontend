@@ -35,7 +35,7 @@ export class NavbarComponent implements OnInit{
   logout():void{
     this.user = null;
     this.token.signOut();
-    this.router.navigate(['/home']);
+    this.router.navigate(['/']);
   }
 
   isAdmin():boolean{
