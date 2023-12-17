@@ -27,7 +27,7 @@ export const routes: Routes = [
         component:BookDetailsComponent
     },
     {
-        path:'user-details',
+        path:'user',
         component:UserDetailsComponent
     },
     {
@@ -39,7 +39,7 @@ export const routes: Routes = [
         component:UserbookshareComponent
     },
     {
-        path:'useraddbook',
+        path:'book/add',
         component:UseraddbookComponent
     },
     {
