@@ -22,14 +22,21 @@
                     }
                     @else {
                         @if(isRegistered()){
+                            <li class="nav-item me-2">
+                                <a class="nav-link" routerLink="" routerLink="/book/add">
+                                    <i class="bi fs-5 bi-bookmark-plus"></i>
+                                    Add book
+                                </a>
+                            </li>
                             @if (isAdmin()){
-                                <li class="nav-item">
+                                <li class="nav-item me-2">
                                     <a class="nav-link" (click)="isAdmin()" routerLink="/admin">
                                         <i class="bi fs-5 bi-person-fill-add"></i>
                                         ADMIN PANEL
                                     </a>
                                 </li>
-                                <li class="nav-item">
+                            }
+                                <li class="nav-item me-2">
                                     <a class="nav-link" routerLink="/user" >
                                         <i class="bi fs-5 bi-person-fill-add"></i>
                                         {{ user.username }}
@@ -41,22 +48,6 @@
                                         LOG OUT
                                     </a>
                                 </li>
-                            }
-                            @else {
-                                <li class="nav-item">
-                                    <a class="nav-link" routerLink="/user" >
-                                        <i class="bi fs-5 bi-person-fill-add"></i>
-                                        {{ user.username }}
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" routerLink="" (click)="logout()">
-                                        <i class="bi fs-5 bi-door-open-fill"></i>
-                                        LOG OUT
-                                    </a>
-                                </li>
-                            }
-                            
                         }
                         @else {
                             <li class="nav-item">
@@ -71,7 +62,6 @@
                                     REGISTER
                                 </a>
                             </li>
-                            
                         }
                     }
                     
