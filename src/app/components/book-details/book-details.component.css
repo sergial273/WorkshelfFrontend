@@ -40,3 +40,13 @@
     align-items: center;
     justify-content: center;
 }
+
+.full-star{
+    color: gold;
+
+}
+
+.empty-star{
+    color: gray;
+
+}
