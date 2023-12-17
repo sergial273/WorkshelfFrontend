@@ -16,14 +16,11 @@ export class NavbarComponent implements OnInit{
   constructor(public router: Router, private token:TokenStorageService) {
   }
 
-  ngOnInit() {
-    console.log(this.user)
-  }
+  ngOnInit() {  }
   
   isRegistered():boolean{
     if(this.token.getToken() != null){
       this.user = this.token.getUser();
-      console.log(this.user)
       return true;
     }
     else{
