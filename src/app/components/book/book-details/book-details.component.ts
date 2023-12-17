@@ -1,8 +1,8 @@
 import { Component, OnInit, Pipe } from '@angular/core';
-import { FooterComponent } from "../shared/footer/footer.component";
-import { BookserviceService } from '../../_services/book/bookservice.service';
+import { FooterComponent } from "../../shared/footer/footer.component";
+import { BookserviceService } from '../../../_services/book/bookservice.service';
 import { ActivatedRoute } from '@angular/router';
-import { Book } from '../../models/book/book.model';
+import { Book } from '../../../models/book/book.model';
 import { DatePipe } from '@angular/common';
 
 @Component({
