@@ -46,4 +46,17 @@ export class EditorialService {
 
     return this.http.post<any>(editorialUrl, editorialData, { headers });
   }
+
+  deleteEditorial(editorialId: number, headers: any): void {
+    let editorialUrl = `${AUTH_API}editorial/delete/${editorialId}`;
+    console.log(editorialUrl);
+    this.http.delete(editorialUrl, { headers }).subscribe({
+      next: (data) => {console.log("works")},
+      error: (error) => {
+        var errorMessage = error.message;
+        console.error('There was an error!', error);
+      },
+    });
+  }
+
 }

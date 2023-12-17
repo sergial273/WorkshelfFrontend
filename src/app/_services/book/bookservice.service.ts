@@ -44,11 +44,10 @@ export class BookserviceService {
   
   deleteBook(bookId: number, headers: any): void{
     let bookUrl = `${AUTH_API}book/delete/${bookId}`;
-    console.log(bookUrl)
+
     this.http.delete(bookUrl, { headers })
         .subscribe({
             next: data => {
-                console.log("VA")
             },
             error: error => {
                 var errorMessage = error.message;

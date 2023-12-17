@@ -102,6 +102,91 @@
           }
         </tbody>
         }
+        @else if (activeButton === 2) {
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">User</th>
+            <th scope="col">Book</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (res of reservations; track $index) {
+          <tr>
+            <th scope="row">{{ res.id }}</th>
+            <td>{{ res.user.username }}</td>
+            <td>{{ res.book.title }}</td>
+            <td>
+              <button
+                (click)="deleteReservation(res.id)"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+        }
+        @else if (activeButton === 3) {
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Email</th>
+            <th scope="col">Role</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (user of users; track $index) {
+          <tr>
+            <th scope="row">{{ user.userId }}</th>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role.roleName }}</td>
+            <td>
+              <button
+                (click)="deleteUser(user.userId)"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+        }
+        @else if (activeButton === 4) {
+          <thead>
+          <tr>
+            <th scope="col">id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Handle</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (edit of editorials; track $index) {
+          <tr>
+            <th scope="row">{{ edit.id }}</th>
+            <td>{{ edit.editorialName }}</td>
+            <td>
+              <button
+                (click)="deleteUser(edit.id)"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-danger"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+          }
+        </tbody>
+        }
       </table>
     </div>
     <div class="d-flex justify-content-center mt-3 mb-5">
