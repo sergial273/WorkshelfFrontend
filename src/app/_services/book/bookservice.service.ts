@@ -19,15 +19,12 @@ export class BookserviceService {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('pageSize', pageSize.toString());
-
-      console.log('Params:', params);
   
       return this.http.get<Book[]>(`${AUTH_API}book/paginated?page=${page}&size=${pageSize}`, { params });
   }
 
   getBookById(bookId: number): Observable<Book> {
     let bookUrl = `${AUTH_API}book/detail/${bookId}`;
-    console.log(`${AUTH_API}book/detail/${bookId}`)
     return this.http.get<Book>(bookUrl);
   }
 
@@ -42,5 +39,21 @@ export class BookserviceService {
     console.log(token)
 
     return this.http.post<Book>(bookUrl, bookData, { headers });
+  }
+
+  
+  deleteBook(bookId: number, headers: any): void{
+    let bookUrl = `${AUTH_API}book/delete/${bookId}`;
+    console.log(bookUrl)
+    this.http.delete(bookUrl, { headers })
+        .subscribe({
+            next: data => {
+                console.log("VA")
+            },
+            error: error => {
+                var errorMessage = error.message;
+                console.error('There was an error!', error);
+            }
+        });
   }
 }
