@@ -31,13 +31,13 @@
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" routerLink="/user-details" >
-                                        <i class="bi fs-5 bi-door-open-fill"></i>
-                                        PROFILE
+                                        <i class="bi fs-5 bi-person-fill-add"></i>
+                                        {{ user.username }}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" routerLink="" (click)="logout()">
-                                        <i class="bi fs-5 bi-person-fill-add"></i>
+                                        <i class="bi fs-5 bi-door-open-fill"></i>
                                         LOG OUT
                                     </a>
                                 </li>
@@ -45,13 +45,13 @@
                             @else {
                                 <li class="nav-item">
                                     <a class="nav-link" routerLink="/user-details" >
-                                        <i class="bi fs-5 bi-door-open-fill"></i>
-                                        PROFILE
+                                        <i class="bi fs-5 bi-person-fill-add"></i>
+                                        {{ user.username }}
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" routerLink="" (click)="logout()">
-                                        <i class="bi fs-5 bi-person-fill-add"></i>
+                                        <i class="bi fs-5 bi-door-open-fill"></i>
                                         LOG OUT
                                     </a>
                                 </li>
