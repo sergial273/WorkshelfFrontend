@@ -9,6 +9,9 @@ import { UserDetailsComponent } from './components/user/user-details/user-detail
 import { AdminComponent } from './components/admin/admin.component';
 import { BookAddComponent } from './components/book/book-add/book-add.component';
 import { EditorialAddComponent } from './components/editorial/editorial-add/editorial-add.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { AdminGuard } from './guards/admin.guard';
+
 
 export const routes: Routes = [
     {
@@ -49,6 +52,15 @@ export const routes: Routes = [
     },
     {
         path:'admin',
+        canActivate : [AdminGuard],
         component:AdminComponent
-    }
+    },
+    {
+        path:'notfound',
+        component:NotFoundComponent
+    },
+    {
+        path:'**',
+        redirectTo: '/notfound'
+    },
 ];
