@@ -19,7 +19,16 @@ Before using the application, you'll need a valid API key from TMDb. Follow thes
 
 Update the `api-constants.ts` file with your API key:
 
+```typescript
 // api-constants.ts
 
 export const API_KEY = 'YOUR_API_KEY';
 export const API_URL = 'https://api.themoviedb.org/3';
+
+### Features
+
+Popular Movies: Get a list of currently trending movies using the endpoint /trending/movie/day.
+Popular Series: Explore currently popular TV series using the endpoint /tv/popular.
+Movie Details: View detailed information about a specific movie using the endpoint /movie/{movieId}.
+Series Details: Explore in-depth details of a specific TV series using the endpoint /tv/{seriesId}.
+Search Functionality: Search for movies and series using various criteria with appropriate endpoints.
