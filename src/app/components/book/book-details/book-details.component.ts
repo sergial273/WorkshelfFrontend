@@ -21,9 +21,9 @@ export class BookDetailsComponent implements OnInit {
     book: Book = new Book();
     bookId: number = 0;
     bookDetails: any;
-    isAvailable: boolean = false;
-    isReservedByCurrentUser: boolean = false;
     ratings: Rating[] = []
+    isReservedByCurrentUser: boolean = true;
+    isAvailable: boolean = true;
 
     constructor(
         private route: ActivatedRoute,
