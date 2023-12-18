@@ -124,8 +124,8 @@ export class AdminComponent implements OnInit {
     this.router.navigate(['/book/detail/', id]);
   }
 
-  async deleteBook(id: number, status: string) {
-    if (status === 'Available') {
+  async deleteBook(id: number, status: number) {
+    if (status === 0) {
       this.loading = true;
       const tokent = this.token.getToken();
       const headers = new HttpHeaders({

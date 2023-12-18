@@ -13,6 +13,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminGuard } from './guards/admin.guard';
 import { BookUpdateComponent } from './components/book/book-update/book-update.component';
 import { UserbooklistComponent } from './components/user/userbooklist/userbooklist.component';
+import { EditorialUpdateComponent } from './components/editorial/editorial-update/editorial-update.component';
 
 
 
@@ -60,6 +61,10 @@ export const routes: Routes = [
     {
         path:'editorial/add',
         component: EditorialAddComponent
+    },
+    {
+        path:'editorial/update/:id',
+        component: EditorialUpdateComponent
     },
     {
         path:'admin',

@@ -9,7 +9,6 @@ export class Book {
     image!: string;
     author!: string;
     reserved!: number;
-    reservationDate!: Date;
     reservationDuration!: Date;
     user!: User;
     editorial!: Editorial;
