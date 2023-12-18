@@ -46,7 +46,8 @@ export class BookDetailsComponent implements OnInit {
         this.bookservice.getBookById(this.bookId).subscribe
             (data => {
                 this.book = data;
-                //this.isAvailable = this.book.bookingStatus === 'Available';
+                //Reserved available = 0 ?
+                this.isAvailable = this.book.reserved === 0;
                 //if (this.tokenStorage.isAuthenticated()) {
                 //    const currentUser = this.tokenStorage.getUser();
                 //    this.isReservedByCurrentUser = this.book.user?.userId === currentUser.id;
