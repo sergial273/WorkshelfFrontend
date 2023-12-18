@@ -76,7 +76,7 @@ export class BookUpdateComponent {
     const formData = this.form.value;
     const editorialId = formData.editorial;
 
-    this.editorialService.getEditorialById(editorialId).subscribe(
+    this.editorialService.getEditorialByIdString(editorialId).subscribe(
       (editorial: any) => {
         formData.editorial = editorial;
         console.log(formData)

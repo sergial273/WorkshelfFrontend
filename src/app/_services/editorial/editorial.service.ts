@@ -44,7 +44,12 @@ export class EditorialService {
   }
 
 
-  getEditorialById(editorialId: string): Observable<Editorial> {
+  getEditorialByIdString(editorialId: string): Observable<Editorial> {
+    let editorialUrl = `${AUTH_API}editorial/detail/${editorialId}`;
+    return this.http.get<Editorial>(editorialUrl);
+  }
+
+  getEditorialByIdNumber(editorialId: number): Observable<Editorial> {
     let editorialUrl = `${AUTH_API}editorial/detail/${editorialId}`;
     return this.http.get<Editorial>(editorialUrl);
   }
@@ -59,6 +64,17 @@ export class EditorialService {
     });
 
     return this.http.post<any>(editorialUrl, editorialData, { headers });
+  }
+
+  udateEditorial(editorialId: number, editorialData: any): Observable<Editorial> {
+    const eidtorialUrl = `${AUTH_API}editorial/update/${editorialId}`;
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.put<Editorial>(eidtorialUrl, editorialData, { headers });
   }
 
   deleteEditorial(editorialId: number, headers: any): void {
