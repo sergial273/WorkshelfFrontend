@@ -2,26 +2,61 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.5.
 
-## Development server
+# Movie and Series App
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This Angular application interacts with The Movie Database (TMDb) API, providing information about movies and series. You can explore popular lists, get specific details, and perform searches.
 
-## Code scaffolding
+## Configuration
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Get a TMDb API Key
 
-## Build
+Before using the application, you'll need a valid API key from TMDb. Follow these steps:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Sign up at [TMDb Developer](https://www.themoviedb.org/settings/api).
+2. Copy your generated API key.
 
-## Running unit tests
+### Set Up API Key
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Update the `api-constants.ts` file with your API key:
 
-## Running end-to-end tests
+// api-constants.ts
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+export const API_KEY = 'YOUR_API_KEY';
+export const API_URL = 'https://api.themoviedb.org/3';
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Custom Methods
+
+  getSeries(): Observable<any> {
+    const url = `https://api.themoviedb.org/3/discover/tv?api_key=${API_KEY}&page=1`;
+    return this.http.get<any[]>(url);
+  }
+  
+  getMovies(): Observable<any> {
+    const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=b1138baa2f255e1ed451defcd6454564`;
+    return this.http.get<any[]>(url);
+  }
+
+  getMovieById(id:any):Observable<any>{
+    return this.http.get("https://api.themoviedb.org/3/movie/"+id+"?api_key=b1138baa2f255e1ed451defcd6454564")
+  }
+
+  getMovieDetails(movieId: string): Observable<Movie> {
+    const url = `https://api.themoviedb.org/3/movie/"+id+"?api_key=b1138baa2f255e1ed451defcd6454564`;
+    return this.http.get<Movie>(url);
+  }
+
+  getSeriesDetails(seriesId: string): Observable<Series> {
+    const url = `${API_URL}/tv/${seriesId}?api_key=${API_KEY}`;
+    return this.http.get<Series>(url);
+  }
+
+  getPopularMovies(): Observable<any> {
+    const url = `https://api.themoviedb.org/3/trending/movie/day?api_key=b1138baa2f255e1ed451defcd6454564`;
+    return this.http.get<any[]>(url);
+  }
+
+  getPopularSeries(): Observable<any> {
+    const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=b1138baa2f255e1ed451defcd6454564`;
+    return this.http.get<any[]>(url);
+  }
