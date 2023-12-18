@@ -11,6 +11,7 @@ import { BookAddComponent } from './components/book/book-add/book-add.component'
 import { EditorialAddComponent } from './components/editorial/editorial-add/editorial-add.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { AdminGuard } from './guards/admin.guard';
+import { BookUpdateComponent } from './components/book/book-update/book-update.component';
 
 
 export const routes: Routes = [
@@ -29,6 +30,10 @@ export const routes: Routes = [
     {
         path:'details/:id',
         component:BookDetailsComponent
+    },
+    {
+        path:'book/update/:id',
+        component:BookUpdateComponent
     },
     {
         path:'user',
