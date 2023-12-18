@@ -79,7 +79,12 @@
           <tr>
             <th scope="row">{{ book.id }}</th>
             <td>{{ book.title }}</td>
-            <td>{{ book.bookingStatus }}</td>
+            @if(book.reserved == 1){
+              <td>Reserved</td>
+            }
+            @else{
+              <td>Available</td>
+            }
             <td>
               <button
                 [routerLink]="['/details', book.id]"
@@ -90,7 +95,7 @@
                 Details
               </button>
               <button
-                (click)="deleteBook(book.id, book.bookingStatus)"
+                (click)="deleteBook(book.id, book.reserved)"
                 routerLinkActive="router-link-active"
                 type="button"
                 class="btn btn-danger"
