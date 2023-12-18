@@ -22,7 +22,6 @@ export class BookAddComponent implements OnInit {
     title: [null],
     image: [null],
     author: [null],
-    bookingStatus: ['Available'],
     reserved: [0],
     reservationDuration: [0],
     user: [this.tokenService.getUser()],
@@ -55,7 +54,7 @@ export class BookAddComponent implements OnInit {
     console.log(editorialId)
     console.log(typeof(formData.editorialId))
 
-    this.editorialService.getEditorialById(editorialId).subscribe(
+    this.editorialService.getEditorialByIdString(editorialId).subscribe(
       (editorial: any) => {
         formData.editorial = editorial;
         console.log(formData)

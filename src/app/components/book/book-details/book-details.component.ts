@@ -37,8 +37,6 @@ export class BookDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.route.params.subscribe(params => {
             this.bookId = +params['id'];
-            console.log(this.loadBookDetails);
-            console.log(this.loadRatings);
             this.loadBookDetails();
             this.loadRatings();
         });
@@ -48,7 +46,8 @@ export class BookDetailsComponent implements OnInit {
         this.bookservice.getBookById(this.bookId).subscribe
             (data => {
                 this.book = data;
-                this.isAvailable = this.book.bookingStatus === 'Available';
+                //Reserved available = 0 ?
+                this.isAvailable = this.book.reserved === 0;
                 //if (this.tokenStorage.isAuthenticated()) {
                 //    const currentUser = this.tokenStorage.getUser();
                 //    this.isReservedByCurrentUser = this.book.user?.userId === currentUser.id;
@@ -63,8 +62,6 @@ export class BookDetailsComponent implements OnInit {
     loadRatings(): void {
         this.ratingService.getRatingsByBookId(this.bookId).subscribe(
             (data: Rating[]) => {
-                console.log("loading ratings from book" + this.bookId);
-                console.log("loading data from book" + data);
                 this.ratings = data;
             },
             (error) => {
