@@ -17,11 +17,11 @@ Before using the application, you'll need a valid API key from TMDb. Follow thes
 
 ## Features
 
-Popular Movies: Get a list of currently trending movies using the endpoint /trending/movie/day.
-Popular Series: Explore currently popular TV series using the endpoint /tv/popular.
-Movie Details: View detailed information about a specific movie using the endpoint /movie/{movieId}.
-Series Details: Explore in-depth details of a specific TV series using the endpoint /tv/{seriesId}.
-Search Functionality: Search for movies and series using various criteria with appropriate endpoints.
+1. Popular Movies: Get a list of currently trending movies using the endpoint /trending/movie/day.
+2. Popular Series: Explore currently popular TV series using the endpoint /tv/popular.
+3. Movie Details: View detailed information about a specific movie using the endpoint /movie/{movieId}.
+4. Series Details: Explore in-depth details of a specific TV series using the endpoint /tv/{seriesId}.
+5. Search Functionality: Search for movies and series using various criteria with appropriate endpoints.
 
 ### Set Up API Key
 
