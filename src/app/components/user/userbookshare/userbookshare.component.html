@@ -1,34 +1,29 @@
 <div class="container mt-5 mb-5">
     <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h2>Book Sharing History</h2>
-            <ul class="list-group">
-                <li class="list-group-item">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Reservation</h5>
-                            <p class="card-text">DATE:</p>
-                            <p class="card-text">DATE:</p>
+        <div class="col-md-6 offset-md-3">
+            <div class="card">
+                <div class="card-header">
+                    <h4>User Book Sharing List</h4>
+                </div>
+
+                @if (reservations.length === 0) {
+                <p>You did not share your books yet!</p>
+                }
+                <div class="card-body">
+                    @for (reservation of reservations; track $index) {
+
+                    <div>
+                        <div class="mb-3">
+                            <h5>Title: {{ reservation.book.title }}</h5>
+                            <p>Reserved by: {{ reservation.user.username }}</p>
+                            <p>Request date: {{ reservation.requestDate | date }}</p>
+                            <p>Return date: {{ reservation.returnDate | date }}</p>
                         </div>
                     </div>
 
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Reservation</h5>
-                            <p class="card-text">DATE:</p>
-                            <p class="card-text">DATE:</p>
-                        </div>
-                    </div>
-
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Reservation</h5>
-                            <p class="card-text">DATE:</p>
-                            <p class="card-text">DATE:</p>
-                        </div>
-                    </div>
-                </li>
-            </ul>
+                    }
+                </div>
+            </div>
         </div>
     </div>
 </div>
