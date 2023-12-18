@@ -22,7 +22,7 @@ export class BookAddComponent implements OnInit {
     title: [null],
     image: [null],
     author: [null],
-    bookingStatus: ['Avaliable'],
+    bookingStatus: ['Available'],
     reserved: [0],
     reservationDate: [null],
     reservationDuration: [0],

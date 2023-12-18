@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { AUTH_API, TOKEN_KEY, USER_KEY } from '../../api-constants';
 import { Book } from '../../models/book/book.model';
 import { TokenStorageService } from '../token-storage.service';
+import { User } from '../../models/user/user.model';
 
 
 @Injectable({
@@ -28,6 +29,15 @@ export class BookserviceService {
     return this.http.get<Book>(bookUrl);
   }
 
+  getBookByUserId(user: User): Observable<Book> {
+    let bookUrl = `${AUTH_API}book/bookByUserId`;
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Book>(bookUrl, {headers});
+  }
 
   addBook(bookData: any): Observable<Book> {
     const bookUrl = `${AUTH_API}book/add`;
