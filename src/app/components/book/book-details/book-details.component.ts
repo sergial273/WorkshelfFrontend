@@ -37,8 +37,6 @@ export class BookDetailsComponent implements OnInit {
     ngOnInit(): void {
         this.route.params.subscribe(params => {
             this.bookId = +params['id'];
-            console.log(this.loadBookDetails);
-            console.log(this.loadRatings);
             this.loadBookDetails();
             this.loadRatings();
         });
@@ -63,8 +61,6 @@ export class BookDetailsComponent implements OnInit {
     loadRatings(): void {
         this.ratingService.getRatingsByBookId(this.bookId).subscribe(
             (data: Rating[]) => {
-                console.log("loading ratings from book" + this.bookId);
-                console.log("loading data from book" + data);
                 this.ratings = data;
             },
             (error) => {
