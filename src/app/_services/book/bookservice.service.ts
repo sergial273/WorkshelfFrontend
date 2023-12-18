@@ -29,6 +29,7 @@ export class BookserviceService {
     return this.http.get<Book>(bookUrl);
   }
 
+
   getBookByUserId(user: User): Observable<Book> {
     let bookUrl = `${AUTH_API}book/bookByUserId`;
     const token = this.tokenService.getToken();
@@ -39,6 +40,7 @@ export class BookserviceService {
     return this.http.get<Book>(bookUrl, {headers});
   }
 
+
   addBook(bookData: any): Observable<Book> {
     const bookUrl = `${AUTH_API}book/add`;
     const token = this.tokenService.getToken();
@@ -46,9 +48,20 @@ export class BookserviceService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    console.log(token)
 
     return this.http.post<Book>(bookUrl, bookData, { headers });
+  }
+
+  updateBook(bookId: number, bookData: any): Observable<Book> {
+    const bookUrl = `${AUTH_API}book/update/${bookId}`;
+    const token = this.tokenService.getToken();
+    console.log(bookUrl)
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+
+    return this.http.put<Book>(bookUrl, bookData, { headers });
   }
 
   

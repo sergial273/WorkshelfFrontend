@@ -1,28 +1,27 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; 
-import { Router } from '@angular/router';
+import { Component} from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'; 
+import { ActivatedRoute, Router } from '@angular/router';
 import { BookserviceService } from '../../../_services/book/bookservice.service';
 import { Editorial } from '../../../models/editorial/editorial.model';
 import { EditorialService } from '../../../_services/editorial/editorial.service';
-import { USER_KEY } from '../../../api-constants';
 import { TokenStorageService } from '../../../_services/token-storage.service';
 
 @Component({
-  selector: 'app-book-add',
+  selector: 'app-book-update',
   standalone: true,
   imports: [ReactiveFormsModule],
-  templateUrl: './book-add.component.html',
-  styleUrl: './book-add.component.css'
+  templateUrl: './book-update.component.html',
+  styleUrl: './book-update.component.css'
 })
-
-export class BookAddComponent implements OnInit {
+export class BookUpdateComponent {
   editorials: Editorial[] = [];
+  book: any;
 
   form: FormGroup = this.formBuilder.group({
     title: [null],
     image: [null],
     author: [null],
-    bookingStatus: ['Available'],
+    bookingStatus: ['Avaliable'],
     reserved: [0],
     reservationDuration: [0],
     user: [this.tokenService.getUser()],
@@ -34,6 +33,7 @@ export class BookAddComponent implements OnInit {
     private router: Router,
     private bookService: BookserviceService,
     private editorialService: EditorialService,
+    private route: ActivatedRoute,
     private tokenService: TokenStorageService
   ) {}
 
@@ -47,19 +47,42 @@ export class BookAddComponent implements OnInit {
         console.error('Error fetching editorials:', error);
       }
     );
+    this.route.params.subscribe(params => {
+      const bookId = params['id'];
+      this.getBookDetails(bookId);
+    });
+  }
+
+  private initializeForm() {
+    this.form.patchValue({
+      title: this.book.title || '', 
+      image: this.book.image || '',
+      author: this.book.author || '',
+      bookingStatus: this.book.bookingStatus || '',
+      reserved: this.book.reserved || '',
+      reservationDuration: this.book.reservationDuration || '',
+      user: this.book.user || '',
+      editorial: this.book.editorial || '',
+    });
+  }
+
+  getBookDetails(bookId: number) {
+    this.bookService.getBookById(bookId).subscribe((data: any) => {
+      this.book = data;
+      this.initializeForm();
+    });
   }
 
   onSubmit() {
+    console.log("onsubmit");
     const formData = this.form.value;
     const editorialId = formData.editorial;
-    console.log(editorialId)
-    console.log(typeof(formData.editorialId))
 
     this.editorialService.getEditorialById(editorialId).subscribe(
       (editorial: any) => {
         formData.editorial = editorial;
         console.log(formData)
-        this.bookService.addBook(formData).subscribe(response => {
+        this.bookService.updateBook(this.book.id, formData).subscribe(response => {
           this.router.navigate(['/']);
         });
       },
