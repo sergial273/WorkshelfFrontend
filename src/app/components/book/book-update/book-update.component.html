@@ -16,8 +16,12 @@
                     <label for="author" class="form-label">Author</label>
                     <input type="text" class="form-control" id="author" formControlName="author" required>
                 </div>
-                <input type="hidden" formControlName="reserved">
+                <div class="mb-3">
+                    <label for="number" class="form-label">reserved</label>
+                    <input type="number" class="form-control" id="reserved" formControlName="reserved" required>
+                </div>
                 <input type="hidden" formControlName="bookingStatus">
+                <input type="hidden" formControlName="reservationDate">
                 <input type="hidden" formControlName="user">
                 <div class="mb-3">
                     <label for="reservationDuration" class="form-label">Reservation Duration (days)</label>

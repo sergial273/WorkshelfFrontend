@@ -32,15 +32,15 @@ export class EditorialService {
     return this.http.get<Editorial[]>(allEditorialsUrl, {headers});
   }
 
-  // getAllEditorials(page: number, pageSize: number): Observable<Editorial[]> {
-  //   const params = new HttpParams()
-  //     .set('page', page.toString())
-  //     .set('pageSize', pageSize.toString());
+  getPaginatedEditorials(page: number, pageSize: number): Observable<Editorial[]> {
+    const params = new HttpParams()
+      .set('page', page.toString())
+      .set('pageSize', pageSize.toString());
 
-  //     console.log('Params:', params);
+      console.log('Params:', params);
   
-  //     return this.http.get<Editorial[]>(`${AUTH_API}editorial/paginated?page=${page}&size=${pageSize}`, { params });
-  // }
+      return this.http.get<Editorial[]>(`${AUTH_API}editorial/paginated?page=${page}&size=${pageSize}`, { params });
+  }
 
 
   getEditorialById(editorialId: string): Observable<Editorial> {
