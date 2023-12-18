@@ -22,7 +22,6 @@ export class BookAddComponent implements OnInit {
     title: [null],
     image: [null],
     author: [null],
-    bookingStatus: ['Available'],
     reserved: [0],
     reservationDuration: [0],
     user: [this.tokenService.getUser()],
