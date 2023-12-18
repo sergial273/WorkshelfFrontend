@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <h2>Create a Book</h2>
-            <form>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mx-1 mx-md-4">
+
                 <div class="mb-3 mt-3">
                     <label for="title" class="form-label">Title</label>
                     <input type="text" class="form-control" id="title" formControlName="title" required>
@@ -15,23 +16,22 @@
                     <label for="author" class="form-label">Author</label>
                     <input type="text" class="form-control" id="author" formControlName="author" required>
                 </div>
-                <div class="mb-3">
-                    <label for="bookingStatus" class="form-label">Booking Status</label>
-                    <input type="text" class="form-control" id="bookingStatus" formControlName="bookingStatus" required>
-                </div>
-                <div class="mb-3">
-                    <label for="reserved" class="form-label">Reserved</label>
-                    <input type="number" class="form-control" id="reserved" formControlName="reserved" required>
-                </div>
-                <div class="mb-3">
-                    <label for="reservationDate" class="form-label">Reservation Date</label>
-                    <input type="date" class="form-control" id="reservationDate" formControlName="reservationDate"
-                        required>
-                </div>
+                <input type="hidden" formControlName="reserved">
+                <input type="hidden" formControlName="bookingStatus">
+                <input type="hidden" formControlName="reservationDate">
+                <input type="hidden" formControlName="user">
                 <div class="mb-3">
                     <label for="reservationDuration" class="form-label">Reservation Duration (days)</label>
-                    <input type="number" class="form-control" id="reservationDuration" formControlName="reservationDuration" min="1" max="7" required>
+                    <input type="number" class="form-control" id="reservationDuration" formControlName="reservationDuration" min="1" max="7"  required>
                 </div>
+                <div class="mb-3">
+                    <label for="editorial" class="form-label">Editorial</label>
+                    <select class="form-select"  id="editorial" formControlName="editorial" required>
+                        @for (editorial of editorials; track $index) {
+                            <option [value]="editorial.id">{{ editorial.editorialName }}</option>
+                        }
+                    </select>
+                  </div>
                 <button type="submit" class="btn btn-primary">Create Book</button>
             </form>
         </div>

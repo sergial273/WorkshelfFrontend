@@ -7,7 +7,7 @@
                     <li class="nav-item">
                         <a class="nav-link" routerLink="/registration">
                             <i class="bi fs-5 bi-person-fill-add"></i>
-                            REGISTER
+                            Register
                         </a>
                     </li>
                 }
@@ -16,36 +16,56 @@
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/login" >
                                 <i class="bi fs-5 bi-door-open-fill"></i>
-                                LOGIN
+                                Login
                             </a>
                         </li>
                     }
                     @else {
                         @if(isRegistered()){
-                            <li class="nav-item">
-                                <a class="nav-link" routerLink="/user-details" >
-                                    <i class="bi fs-5 bi-door-open-fill"></i>
-                                    PROFILE
+                            <li class="nav-item me-2">
+                                <a class="nav-link" routerLink="" routerLink="/editorial/add">
+                                    <i class="bi fs-5 bi-bookmark-plus"></i>
+                                    Add editorial
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" (click)="logout()">
-                                    <i class="bi fs-5 bi-person-fill-add"></i>
-                                    LOG OUT
+                            <li class="nav-item me-2">
+                                <a class="nav-link" routerLink="" routerLink="/book/add">
+                                    <i class="bi fs-5 bi-bookmark-plus"></i>
+                                    Add book
                                 </a>
                             </li>
+                            @if (isAdmin()){
+                                <li class="nav-item me-2">
+                                    <a class="nav-link" (click)="isAdmin()" routerLink="/admin">
+                                        <i class="bi fs-5 bi-person-fill-add"></i>
+                                        Admin Panel
+                                    </a>
+                                </li>
+                            }
+                                <li class="nav-item me-2">
+                                    <a class="nav-link" routerLink="/user" >
+                                        <i class="bi fs-5 bi-person-fill-add"></i>
+                                        {{ user.username }}
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" routerLink="" (click)="logout()">
+                                        <i class="bi fs-5 bi-door-open-fill"></i>
+                                        Log Out
+                                    </a>
+                                </li>
                         }
                         @else {
                             <li class="nav-item">
                                 <a class="nav-link" routerLink="/login" >
                                     <i class="bi fs-5 bi-door-open-fill"></i>
-                                    LOGIN
+                                    Login
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" routerLink="/registration">
                                     <i class="bi fs-5 bi-person-fill-add"></i>
-                                    REGISTER
+                                    Register
                                 </a>
                             </li>
                         }

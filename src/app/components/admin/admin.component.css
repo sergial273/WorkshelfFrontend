@@ -1,0 +1,19 @@
+a.apuntar:hover {
+    cursor: pointer;
+}
+
+.purple{
+    background-color: #e20074;
+    color: aliceblue;
+  }
+
+.gap{
+    margin-right: 10px;
+    background-color: #005ae2;
+}
+
+.test{
+    position: relative;
+    margin-left: 40%;
+    margin-top: 20%;
+}
