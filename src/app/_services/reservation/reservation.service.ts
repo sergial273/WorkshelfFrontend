@@ -3,6 +3,7 @@ import { Reservation } from '../../models/reservation/reservation.model';
 import { User } from '../../models/user/user.model';
 import { Observable } from 'rxjs';
 import { AUTH_API } from '../../api-constants';
+import { Book } from '../../models/book/book.model';
 import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable({
@@ -17,7 +18,12 @@ export class ReservationService {
     return this.http.get<Reservation[]>(url);
   }
 
-  getAllResrevation(page: number, pageSize: number, headers: any): Observable<Reservation[]> {
+  getReservationsByBook(book: Book): Observable<Reservation[]> {
+    const url = `${AUTH_API}reservation/reserveByBookId/${book.id}`;
+    return this.http.get<Reservation[]>(url);
+}
+
+    getAllResrevation(page: number, pageSize: number, headers: any): Observable<Reservation[]> {
       return this.http.get<Reservation[]>(`${AUTH_API}reservation/paginated?page=${page}&size=${pageSize}`, { headers });
   }
 

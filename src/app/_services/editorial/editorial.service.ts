@@ -32,7 +32,8 @@ export class EditorialService {
     return this.http.get<Editorial[]>(allEditorialsUrl, {headers});
   }
 
-  getPaginatedEditorials(page: number, pageSize: number): Observable<Editorial[]> {
+
+  getEditorialsPaginated(page: number, pageSize: number): Observable<Editorial[]> {
     const params = new HttpParams()
       .set('page', page.toString())
       .set('pageSize', pageSize.toString());

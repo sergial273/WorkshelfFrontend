@@ -197,7 +197,7 @@ export class AdminComponent implements OnInit {
   //Editorials Methods
   async getAllEditorials() {
     this.ediorialService
-      .getPaginatedEditorials(this.currentPage, this.pageSize)
+      .getEditorialsPaginated(this.currentPage, this.pageSize)
       .subscribe((edit) => {
         this.editorials = edit;
       });
