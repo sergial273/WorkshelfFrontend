@@ -12,5 +12,5 @@ export class Book {
     reservationDuration!: Date;
     user!: User;
     editorial!: Editorial;
-    reservation!: Reservation;
+    reservation!: Reservation[];
 }

@@ -4,18 +4,24 @@ import { User } from '../../models/user/user.model';
 import { Observable } from 'rxjs';
 import { AUTH_API } from '../../api-constants';
 import { Book } from '../../models/book/book.model';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { TokenStorageService } from '../token-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ReservationService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,private tokenService: TokenStorageService) { }
 
-  getReservationsByUser(user: User): Observable<Reservation[]> {
-    const url = `${AUTH_API}reservation/reservesByUserId/${user.userId}`;
-    return this.http.get<Reservation[]>(url);
+  getReservationsByUser(user: User): Observable<Reservation> {
+    let resURL = `${AUTH_API}reservation/reserveByUserId`;
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Reservation>(resURL, {headers});
   }
 
   getReservationsByBook(book: Book): Observable<Reservation[]> {
