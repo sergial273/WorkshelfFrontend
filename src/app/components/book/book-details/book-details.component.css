@@ -54,8 +54,8 @@
 }
 
 .row {
-    align-items: center;
-    justify-content: center;
+    display: flex;
+    width: 100%; 
 }
 
 .full-star {
@@ -66,4 +66,35 @@
 .empty-star {
     color: gray;
 
+}
+
+.book-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px solid;
+}
+
+.card-img-top {
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    width: 200px;
+}
+
+.card-img-top img {
+    height: 100% !important;
+}
+
+.card-body h2 {
+    font-size: 2.5rem;
+}
+
+.col-md-12 {
+    flex: 0 0 100%;
+    height: 375px;
+    max-width: 100%;;
+}
+
+#comments { 
+    width: 200px;
 }

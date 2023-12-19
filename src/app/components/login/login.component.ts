@@ -24,6 +24,16 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
 
+  formReg: any = {
+    username: null,
+    email: null,
+    password: null,
+  };
+
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessageReg = '';
+
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
@@ -38,7 +48,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  async onSubmit(): Promise<void> {
+  async onSubmitLogin(): Promise<void> {
     const { username, password } = this.form;
     const data: any = await this.authService.login(username, password).toPromise();
 
@@ -58,5 +68,20 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  onSubmitReg(): void {
+    const { username, email, password } = this.form;
+    this.authService.register(username, email, password).subscribe(
+      (data: any) => {
+        this.isSuccessful = true;
+        this.isSignUpFailed = false;
+        this.router.navigate(['/login']);
+      },
+      (err: any) => {
+        this.errorMessage = err.error.message;
+        this.isSignUpFailed = true;
+      }
+    );
   }
 }
