@@ -30,7 +30,7 @@
                     <label for="editorial" class="form-label">Editorial</label>
                     <select class="form-select"  id="editorial" formControlName="editorial" required>
                         @for (editorial of editorials; track $index) {
-                            <option [value]="editorial.id">{{ editorial.editorialName }}</option>
+                            <option [value]="editorial.id" [attr.selected]="editorial.id === selectedEditorialId ? true : null">{{ editorial.editorialName }}</option>
                         }
                     </select>
                   </div>

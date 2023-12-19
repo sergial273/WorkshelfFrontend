@@ -72,11 +72,11 @@ export const routes: Routes = [
         component:AdminComponent
     },
     {
-        path:'notfound',
+        path:'404',
         component:NotFoundComponent
     },
     {
         path:'**',
-        redirectTo: '/notfound'
+        redirectTo: '/404'
     },
 ];
