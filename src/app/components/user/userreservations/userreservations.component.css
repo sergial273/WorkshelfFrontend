@@ -1,0 +1,47 @@
+.card-header {
+    background-color: #e20074 !important;
+}
+
+.reservation-card {
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(21, 21, 21, 0.2);
+    transition: all 0.3s ease;
+}
+
+.reservation-card:hover {
+    color: #080808;
+    box-shadow: 0 8px 16px rgba(226, 0, 116, 0.3);
+}
+
+.container {
+    height: 64.8vh;
+}
+
+.text-primary {
+    color: #e20074 !important;
+}
+
+.book-card {
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(21, 21, 21, 0.2);
+    transition: all 0.3s ease;
+}
+
+.book-card:hover {
+    box-shadow: 0 8px 16px rgba(226, 0, 116, 0.3);
+}
+
+.book-card .btn {
+    background-color: #ffeba7;
+    color: black;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.book-card .btn:hover {
+    background-color: #e20074;
+    color: #ffeba7;
+    box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}

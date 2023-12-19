@@ -39,24 +39,6 @@
                     </ul>
                     }
                     <ul class="navbar-nav">
-                        @if(this.router.url === '/login'){
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/registration">
-                                <i class="bi fs-5 bi-person-fill-add"></i>
-                                Register
-                            </a>
-                        </li>
-                        }
-                        @else {
-                        @if (this.router.url === '/registration') {
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/login">
-                                <i class="bi fs-5 bi-door-open-fill"></i>
-                                Login
-                            </a>
-                        </li>
-                        }
-                        @else {
                         @if(isRegistered()){
                         <div class="dropdown">
                             <button class="btn nav-link dropdown-toggle" type="button" id="dropdownMenuButton1"
@@ -110,18 +92,9 @@
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/login">
                                 <i class="bi fs-5 bi-door-open-fill"></i>
-                                Login
+                                Login/Sign Up
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" routerLink="/registration">
-                                <i class="bi fs-5 bi-person-fill-add"></i>
-                                Register
-                            </a>
-                        </li>
-                        }
-                        }
-
                         }
 
                     </ul>
