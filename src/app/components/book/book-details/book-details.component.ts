@@ -108,10 +108,15 @@ export class BookDetailsComponent implements OnInit {
           },
           (error) => {
             console.error('Error al realizar la reserva:', error);
-          }
+        }
         );
     }
-
+    
+    viewBookReservations(book: any) {
+        this.reservationService.returnBookReservation(book);
+        this.router.navigate([`book/${book.id}/reservations`]);
+    }
+  
     rateBook(book: any){
         this.rating = true;
     }
