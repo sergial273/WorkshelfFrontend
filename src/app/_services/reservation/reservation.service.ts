@@ -74,5 +74,15 @@ export class ReservationService {
     });
     return this.http.get<Reservation>(url, { headers });
   }
+
+  getReserveByUserAndBook(id:number): Observable<Reservation>{
+    const url = `${AUTH_API}reservation/reserveByUserAndBook/`+id;
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Reservation>(url,{ headers });
+  }
 }
 
