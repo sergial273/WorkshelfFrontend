@@ -98,10 +98,15 @@ export class BookDetailsComponent implements OnInit {
           (response) => {
             console.log('Reserva exitosa:', response);
             this.router.navigate([`/details/${book.id}`]);
-          },
-          (error) => {
+        },
+        (error) => {
             console.error('Error al realizar la reserva:', error);
-          }
+        }
         );
+    }
+    
+    viewBookReservations(book: any) {
+        this.reservationService.returnBookReservation(book);
+        this.router.navigate([`book/${book.id}/reservations`]);
     }
 }

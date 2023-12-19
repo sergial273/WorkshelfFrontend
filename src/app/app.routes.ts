@@ -56,6 +56,10 @@ export const routes: Routes = [
         component:UserbookshareComponent
     },
     {
+        path:'book/:id/reservations',
+        component:UserbookshareComponent
+    },
+    {
         path:'userbooklist',
         component:UserbooklistComponent
     },

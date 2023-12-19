@@ -30,8 +30,9 @@
               <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
                 data-type="theme" data-id="{{ book.id }}">Rate</a>
               }
-              <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
-                data-type="theme" data-id="{{ book.id }}">View Reservations</a>
+              <button class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
+        data-type="theme" [attr.data-id]="book.id" (click)="viewBookReservations(book)">View Reservations</button>
+
             </div>
           </div>
         </div>
