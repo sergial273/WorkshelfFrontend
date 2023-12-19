@@ -17,9 +17,18 @@
                     <input type="text" class="form-control" id="author" formControlName="author" required>
                 </div>
                 <div class="mb-3">
-                    <label for="number" class="form-label">reserved</label>
-                    <input type="number" class="form-control" id="reserved" formControlName="reserved" required>
-                </div>
+                    <label for="genre" class="form-label">Genre</label>
+                    <select class="form-select" id="genre" formControlName="genre" required>
+                      <option value="Adventure" [selected]="form.get('genre')?.value === 'Adventure'">Adventure</option>
+                      <option value="Mystery" [selected]="form.get('genre')?.value === 'Mystery'">Mystery</option>
+                      <option value="Science Fiction" [selected]="form.get('genre')?.value === 'Science Fiction'">Science Fiction</option>
+                      <option value="Romance" [selected]="form.get('genre')?.value === 'Romance'">Romance</option>
+                      <option value="Thriller" [selected]="form.get('genre')?.value === 'Thriller'">Thriller</option>
+                      <option value="Manga" [selected]="form.get('genre')?.value === 'Manga'">Manga</option>
+                    </select>
+                  </div>
+                  
+                <input type="hidden" formControlName="reserved">
                 <input type="hidden" formControlName="reservationDate">
                 <input type="hidden" formControlName="user">
                 <div class="mb-3">
