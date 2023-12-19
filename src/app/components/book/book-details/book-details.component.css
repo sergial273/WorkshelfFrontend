@@ -2,6 +2,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
 }
 
 .jumbotron {
@@ -10,6 +11,7 @@
     color: #343a40;
     margin-bottom: 0;
     border-radius: 0;
+    display: flex;
 }
 
 .img {
@@ -36,17 +38,17 @@
     width: 100%;
 }
 
-.row{
+.row {
     align-items: center;
     justify-content: center;
 }
 
-.full-star{
+.full-star {
     color: gold;
 
 }
 
-.empty-star{
+.empty-star {
     color: gray;
 
 }

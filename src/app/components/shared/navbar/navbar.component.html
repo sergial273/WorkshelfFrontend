@@ -1,6 +1,20 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-magenta">
+<nav class="navbar navbar-expand-lg navbar-light bg-magenta sticky-top">
     <div class="container">
-        <a class="navbar-brand" routerLink="/">HOME</a>
+        <div class="container">
+            <div class="navbar-nav me-auto">
+                <a class="navbar-brand" routerLink="/">
+                    <img src="../../../../assets/images/logo.jpg" alt="Logo" height="50" width="50">
+                </a>
+                @if(isRegistered()){
+                    <a class="nav-link" routerLink="/editorial/add">
+                        <i class="bi fs-5 bi-bookmark-plus"></i>
+                        Add Editorial
+                    </a>
+                    <a class="nav-link" routerLink="/book/add">
+                        <i class="bi fs-5 bi-bookmark-plus"></i>
+                        Add Book
+                    </a>
+                }
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 @if(this.router.url === '/login'){
@@ -22,18 +36,6 @@
                     }
                     @else {
                         @if(isRegistered()){
-                            <li class="nav-item me-2">
-                                <a class="nav-link" routerLink="" routerLink="/editorial/add">
-                                    <i class="bi fs-5 bi-bookmark-plus"></i>
-                                    Add editorial
-                                </a>
-                            </li>
-                            <li class="nav-item me-2">
-                                <a class="nav-link" routerLink="" routerLink="/book/add">
-                                    <i class="bi fs-5 bi-bookmark-plus"></i>
-                                    Add book
-                                </a>
-                            </li>
                             @if (isAdmin()){
                                 <li class="nav-item me-2">
                                     <a class="nav-link" (click)="isAdmin()" routerLink="/admin">
@@ -74,6 +76,8 @@
                 }
                 
             </ul>
+        </div>
+            </div>
         </div>
     </div>
 </nav>
