@@ -85,7 +85,7 @@ export class BookDetailsComponent implements OnInit {
         this.reservationService.addReservation(book).subscribe(
           (response) => {
             console.log('Reserva exitosa:', response);
-            this.router.navigate(['/']);
+            window.location.reload();
           },
           (error) => {
             console.error('Error al realizar la reserva:', error);
@@ -97,7 +97,7 @@ export class BookDetailsComponent implements OnInit {
         this.reservationService.returnBookReservation(book).subscribe(
           (response) => {
             console.log('Reserva exitosa:', response);
-            this.router.navigate([`/details/${book.id}`]);
+            window.location.reload();
           },
           (error) => {
             console.error('Error al realizar la reserva:', error);
