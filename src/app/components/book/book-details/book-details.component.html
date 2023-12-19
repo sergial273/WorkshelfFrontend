@@ -8,7 +8,7 @@
             <h1 class="display-3 mb-2 display-fix">{{ book.title }}</h1>
             <p class="text-spacey">Author: <span class="text-merriweather">{{ book.author }}</span></p>
             <p class="text-spacey">Genre: <span class="text-merriweather">{{ book.genre }}</span></p>
-            <p class="text-spacey">Editorial: <span class="text-merriweather">{{ book.editorial.editorialName }}</span></p>
+            <p class="text-spacey">Publisher: <span class="text-merriweather">{{ book.editorial.editorialName }}</span></p>
             @if (book.reserved === 0) {
               <p class="text-spacey">Reservation status: <span class="text-merriweather">Available</span></p>
             } @else if (book.reserved === 1) {

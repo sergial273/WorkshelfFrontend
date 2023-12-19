@@ -3,13 +3,13 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../_services/auth.service';
 import { TokenStorageService } from '../../_services/token-storage.service';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { JsonPipe } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, FooterComponent],
+  imports: [FormsModule, FooterComponent, RouterLink],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
