@@ -1,4 +1,3 @@
-
 #ht-tm-jumbotron {
     display: flex;
     align-items: center;
@@ -93,7 +92,6 @@
     flex: 0 0 100%;
     height: 375px;
     max-width: 100%;;
-}
 
 #comments { 
     width: 200px;
