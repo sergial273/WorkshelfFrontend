@@ -76,7 +76,7 @@
       <form>
         <div class="form-group">
           <label for="exampleFormControlSelect1">Rating:</label>
-          <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="stars">
+          <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="ratingToAdd.score" [ngModelOptions]="{standalone: true}">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -87,7 +87,7 @@
   
         <div class="form-group">
           <label for="exampleFormControlTextarea1">What's your opinion?</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="comment"></textarea>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="ratingToAdd.comment" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
         <button type="button" class="btn btn-danger" (click)="rating=false">Cancel</button>
         <button type="button" class="btn btn-primary" (click)="addRating()">Submit</button>

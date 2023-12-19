@@ -32,6 +32,7 @@ export class BookDetailsComponent implements OnInit {
     rating: boolean = false; 
     stars: number = 1;
     comment: string = '';
+    ratingToAdd: Rating = new Rating();
 
 
     constructor(
@@ -122,6 +123,24 @@ export class BookDetailsComponent implements OnInit {
     }
 
     addRating(){
+        this.reservationService.getReserveByUserAndBook(this.book.id).subscribe(
+            (response) => {
+              console.log('Reserva exitosa:', response);
+              this.ratingToAdd.reservation = response
 
+            },
+            (error) => {
+              console.error('Error:', error);
+            }
+          );
+        this.ratingService.addRating(this.ratingToAdd).subscribe(
+            (response) => {
+              console.log('Reserva exitosa:', response);
+              
+            },
+            (error) => {
+              console.error('Error al realizar la reserva:', error);
+            }
+          );
     }
 }
