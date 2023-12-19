@@ -38,6 +38,16 @@ export class ReservationService {
     return this.http.post<any>(urlReservation, book, { headers });
   }
 
+  returnBookReservation(book: any): Observable<any> {
+    const urlReservation = `${AUTH_API}reservation/book/return`;
+    const token = this.tokenService.getToken();
+    console.log(book)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<any>(urlReservation, book, { headers });
+  }
+
   getAllResrevation(page: number, pageSize: number, headers: any): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${AUTH_API}reservation/paginated?page=${page}&size=${pageSize}`, { headers });
   }
