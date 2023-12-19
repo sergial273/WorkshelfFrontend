@@ -1,3 +1,37 @@
 .row {
     height: 583px;
 }
+
+.container {
+    height: 64.8vh;
+}
+
+.card-header {
+    background-color: #e20074 !important;
+}
+
+.book-card {
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(21, 21, 21, 0.2);
+    transition: all 0.3s ease;
+}
+
+.d-grid {
+    width: 40px;
+    align-items: center;
+    text-align: center;
+}
+
+button {
+    background-color: #e20074;
+    color: white;
+    font-weight: bold;
+    border: none;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+    background-color: #1a521a;
+    box-shadow: 0 8px 24px 0 rgba(16, 39, 112, 0.2);
+}

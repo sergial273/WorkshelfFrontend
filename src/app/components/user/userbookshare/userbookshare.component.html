@@ -1,26 +1,32 @@
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-header">
-                    <h4>User Book Sharing List</h4>
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
+                    <h4>My Book Sharing List</h4>
                 </div>
 
                 @if (reservations.length === 0) {
-                <p>You did not share your books yet!</p>
+                    <p class="lead mb-0 text-muted">You did not share your books yet!</p>
                 }
                 <div class="card-body">
                     @for (reservation of reservations; track $index) {
-
-                    <div>
-                        <div class="mb-3">
-                            <h5>Title: {{ reservation.book.title }}</h5>
-                            <p>Reserved by: {{ reservation.user.username }}</p>
-                            <p>Request date: {{ reservation.requestDate | date }}</p>
-                            <p>Return date: {{ reservation.returnDate | date }}</p>
+                        <div class="card mb-3 reservation-card">
+                            <div class="card-body">
+                                <div class="d-flex flex-start">
+                                    <div class="w-100">
+                                        <div class="d-flex justify-content-between align-items-center mb-3">
+                                            <h6 class="text-primary fw-bold mb-0">
+                                                <strong>Title:</strong> {{ reservation.book.title }}
+                                            </h6>
+                                        </div>
+                                        <p class="mb-1"><strong>Reserved by:</strong> {{ reservation.user.username }}</p>
+                                        <p class="mb-1"><strong>Request date:</strong> {{ reservation.requestDate | date }}</p>
+                                        <p class="mb-0"><strong>Return date:</strong> {{ reservation.returnDate | date }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-
                     }
                 </div>
             </div>
