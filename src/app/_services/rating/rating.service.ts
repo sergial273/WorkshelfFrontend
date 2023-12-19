@@ -20,7 +20,7 @@ export class RatingService {
   addRating(rating: Rating): Observable<Rating> {
     const bookUrl = `${AUTH_API}rating/add`;
     const token = this.tokenService.getToken();
-
+    
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });

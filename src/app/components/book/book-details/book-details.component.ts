@@ -11,6 +11,8 @@ import { RatingService } from '../../../_services/rating/rating.service';
 import { ReservationService } from '../../../_services/reservation/reservation.service';
 import { Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { finalize, switchMap } from 'rxjs/operators';
+import { Reservation } from '../../../models/reservation/reservation.model';
 
 
 @Component({
@@ -26,7 +28,7 @@ export class BookDetailsComponent implements OnInit {
     bookId: number = 0;
     bookDetails: any;
     ratings: Rating[] = []
-    isReservedByCurrentUser: boolean = true;
+    isReservedByCurrentUser: boolean = false;
     isAvailable: boolean = true;
 
     rating: boolean = false; 
@@ -55,22 +57,43 @@ export class BookDetailsComponent implements OnInit {
     }
 
     loadBookDetails(): void {
-        this.bookservice.getBookById(this.bookId).subscribe
-            (data => {
-                this.book = data;
-                //Reserved available = 0 ?
-                this.isAvailable = this.book.reserved === 0;
-                //if (this.tokenStorage.isAuthenticated()) {
-                //    const currentUser = this.tokenStorage.getUser();
-                //    this.isReservedByCurrentUser = this.book.user?.userId === currentUser.id;
-                //}
-            },
-                (error) => {
-                    console.error('Error fetching book details:', error);
-                }
-            );
+      this.bookservice.getBookById(this.bookId).pipe(
+        finalize(() => {
+          this.checkIfs();
+        })
+      ).subscribe(
+        (data) => {
+          this.book = data;
+          console.log(this.book)
+        },
+        (error) => {
+          console.error('Error fetching book details:', error);
+        }
+      );
     }
 
+    findActiveReservation(): Reservation | undefined {
+      const currentDate = new Date();
+      
+      console.log('AAAAAAA'+this.book.reservation)
+      const activeReservation = this.book.reservation.find(reservation => {
+        return currentDate <= new Date(reservation.returnDate);
+      });
+  
+      return activeReservation;
+    }
+
+    checkIfs(){
+      this.isAvailable = this.book.reserved === 0;
+          if (this.tokenStorage.getToken() !== null ) {
+              const currentUser = this.tokenStorage.getUser();
+              
+              const activeReservation = this.findActiveReservation()
+
+              console.log(activeReservation?.user.userId)
+              this.isReservedByCurrentUser = activeReservation?.user.userId === currentUser.userId;
+          }
+    }
     loadRatings(): void {
         this.ratingService.getRatingsByBookId(this.bookId).subscribe(
             (data: Rating[]) => {
@@ -123,24 +146,18 @@ export class BookDetailsComponent implements OnInit {
     }
 
     addRating(){
-        this.reservationService.getReserveByUserAndBook(this.book.id).subscribe(
-            (response) => {
-              console.log('Reserva exitosa:', response);
-              this.ratingToAdd.reservation = response
-
-            },
-            (error) => {
-              console.error('Error:', error);
-            }
-          );
-        this.ratingService.addRating(this.ratingToAdd).subscribe(
-            (response) => {
-              console.log('Reserva exitosa:', response);
-              
-            },
-            (error) => {
-              console.error('Error al realizar la reserva:', error);
-            }
-          );
+        this.reservationService.getReserveByUserAndBook(this.book.id).pipe(
+          switchMap((reservation) => {
+            this.ratingToAdd.reservation = reservation;
+        
+            return this.ratingService.addRating(this.ratingToAdd);
+          })
+        ).subscribe(
+          (response) => {
+            window.location.reload();
+          },
+          (error) => {
+            console.error('Error al realizar la reserva:', error);
+          });
     }
 }
