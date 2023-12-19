@@ -70,6 +70,7 @@
           <tr>
             <th scope="col">id</th>
             <th scope="col">Title</th>
+            <th scope="col">Booking Status</th>
             <th scope="col">Handle</th>
           </tr>
         </thead>
@@ -78,6 +79,12 @@
           <tr>
             <th scope="row">{{ book.id }}</th>
             <td>{{ book.title }}</td>
+            @if(book.reserved == 1){
+              <td>Reserved</td>
+            }
+            @else{
+              <td>Available</td>
+            }
             <td>
               <button
                 [routerLink]="['/details', book.id]"
@@ -86,6 +93,22 @@
                 class="btn btn-primary gap"
               >
                 Details
+              </button>
+              <button
+                [routerLink]="['/book/update', book.id]"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-primary gap"
+              >
+                Update
+              </button>
+              <button
+                (click)="deleteBook(book.id, book.reserved)"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-danger"
+              >
+                Delete
               </button>
             </td>
           </tr>
@@ -164,6 +187,14 @@
             <th scope="row">{{ edit.id }}</th>
             <td>{{ edit.editorialName }}</td>
             <td>
+              <button
+              [routerLink]="['/editorial/update', edit.id]"
+                routerLinkActive="router-link-active"
+                type="button"
+                class="btn btn-primary gap"
+              >
+                Update
+              </button>
               <button
                 (click)="deleteUser(edit.id)"
                 routerLinkActive="router-link-active"

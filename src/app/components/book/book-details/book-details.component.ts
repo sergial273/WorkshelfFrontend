@@ -1,4 +1,4 @@
-import { Component, OnInit, Pipe } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DatePipe } from '@angular/common';
 import { FooterComponent } from '../../shared/footer/footer.component';
@@ -8,6 +8,8 @@ import { BookserviceService } from '../../../_services/book/bookservice.service'
 import { AuthService } from '../../../_services/auth.service';
 import { TokenStorageService } from '../../../_services/token-storage.service';
 import { RatingService } from '../../../_services/rating/rating.service';
+import { ReservationService } from '../../../_services/reservation/reservation.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-book-details',
@@ -30,15 +32,15 @@ export class BookDetailsComponent implements OnInit {
         private bookservice: BookserviceService,
         private authService: AuthService,
         private tokenStorage: TokenStorageService,
-        private ratingService: RatingService
+        private ratingService: RatingService,
+        private reservationService: ReservationService,
+        private router: Router
 
     ) { }
 
     ngOnInit(): void {
         this.route.params.subscribe(params => {
             this.bookId = +params['id'];
-            console.log(this.loadBookDetails);
-            console.log(this.loadRatings);
             this.loadBookDetails();
             this.loadRatings();
         });
@@ -64,8 +66,6 @@ export class BookDetailsComponent implements OnInit {
     loadRatings(): void {
         this.ratingService.getRatingsByBookId(this.bookId).subscribe(
             (data: Rating[]) => {
-                console.log("loading ratings from book" + this.bookId);
-                console.log("loading data from book" + data);
                 this.ratings = data;
             },
             (error) => {
@@ -79,5 +79,17 @@ export class BookDetailsComponent implements OnInit {
         const starArray = Array(fullStars).fill('full-star');
         
         return starArray;
+    }
+
+    createReservation(book: any) {
+        this.reservationService.addReservation(book).subscribe(
+          (response) => {
+            console.log('Reserva exitosa:', response);
+            this.router.navigate(['/']);
+          },
+          (error) => {
+            console.error('Error al realizar la reserva:', error);
+          }
+        );
     }
 }
