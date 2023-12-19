@@ -25,17 +25,17 @@
 
               }
               @if (isReservedByCurrentUser) {
-                <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
-                data-type="theme" data-id="{{ book.id }}">Return</a>
+                <button class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link" data-type="theme" [attr.data-id]="book.id" (click)="returnBook(book)">Return</button>
+            
               <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
                 data-type="theme" data-id="{{ book.id }}">Rate</a>
               }
+              <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
+                data-type="theme" data-id="{{ book.id }}">View Reservations</a>
             </div>
           </div>
         </div>
       </div>
-
-      <!-- section comments -->
       <section style="background-color: #ffffff">
         <div class="container my-5 py-5 text-dark">
           <div class="row d-flex justify-content-center">
@@ -65,7 +65,6 @@
                   </div>
                 </div>
               }
-    
             </div>
           </div>
         </div>
