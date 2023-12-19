@@ -1,0 +1,62 @@
+.card {
+    border-radius: 25px;
+}
+
+.card-body {
+    padding: 2rem;
+}
+
+.btn-dark {
+    background-color: #e20074;
+}
+
+.btn-dark:hover {
+    background-color: #e20074;
+}
+
+.form-outline {
+    position: relative;
+}
+
+.form-outline input {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+}
+
+.form-outline label {
+    position: absolute;
+    top: 0.5rem;
+    left: 0;
+    color: #777;
+    transition: top 0.3s, font-size 0.3s;
+    cursor: text;
+}
+
+.form-outline input:focus~label,
+.form-outline input:valid~label {
+    top: -1.25rem;
+    font-size: 15px;
+    color: #e20074;
+}
+
+.alert {
+    margin-top: 1rem;
+}
+
+.text-muted {
+    color: #777;
+}
+
+.text-decoration-none {
+    color: #e20074;
+    text-decoration: none;
+}
+
+.text-decoration-none:hover {
+    text-decoration: underline;
+}

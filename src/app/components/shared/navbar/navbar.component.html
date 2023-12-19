@@ -4,8 +4,7 @@
             <div class="navbar-nav me-auto">
                 <a class="navbar-brand d-flex align-items-center" routerLink="/">
                     <img src="../../../../assets/images/logo.jpg" alt="Logo" height="50" width="50">
-                    <img src="../../../../assets/images/workshelf.jpg" alt="workshelf" height="50" width="115">
-
+                    <!-- <img src="../../../../assets/images/workshelf.jpg" alt="workshelf" height="50" width="125"> -->
                 </a>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
                     @if(isRegistered()){
@@ -13,7 +12,7 @@
                         <li class="nav-item">
                             <a class="nav-link" routerLink="/book/list">
                                 <i class="bi fs-5 bi-journals"></i>
-                                Book List
+                                My Book List
                             </a>
                         </li>
                         <li class="nav-item dropdown">
@@ -26,7 +25,7 @@
                                 <li>
                                     <a class="dropdown-item" routerLink="/editorial/add">
                                         <i class="bi fs-5 bi-journal-plus"></i>
-                                        New Editorial
+                                        New Publisher
                                     </a>
                                 </li>
                                 <li>
@@ -67,27 +66,27 @@
                             </button>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                                 <li class="nav-item me-2">
+                                    <a class="dropdown-item" routerLink="/userbooklist">
+                                        <i class="bi fs-5 bi-person-fill-add"></i>
+                                        My Books
+                                    </a>
+                                </li>
+                                <li class="nav-item me-2">
                                     <a class="dropdown-item" routerLink="/userreservations">
                                         <i class="bi fs-5 bi-person-fill-add"></i>
-                                        Reservations
+                                        My Reservations
                                     </a>
                                 </li>
                                 <li class="nav-item me-2">
                                     <a class="dropdown-item" routerLink="/userbookshare">
                                         <i class="bi fs-5 bi-person-fill-add"></i>
-                                        Book Sharing History
-                                    </a>
-                                </li>
-                                <li class="nav-item me-2">
-                                    <a class="dropdown-item" routerLink="/userbooklist">
-                                        <i class="bi fs-5 bi-person-fill-add"></i>
-                                        Books
+                                        My Book Sharing History
                                     </a>
                                 </li>
                                 <li class="nav-item me-2">
                                     <a class="dropdown-item" routerLink="/user">
                                         <i class="bi fs-5 bi-person-fill-add"></i>
-                                        My Profile
+                                        Profile
                                     </a>
                                 </li>
                                 @if (isAdmin()){
