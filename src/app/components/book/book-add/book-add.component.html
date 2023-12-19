@@ -16,20 +16,32 @@
                     <label for="author" class="form-label">Author</label>
                     <input type="text" class="form-control" id="author" formControlName="author" required>
                 </div>
+                <div class="mb-3">
+                    <label for="genre" class="form-label">Genre</label>
+                    <select class="form-select" id="genre" formControlName="genre" required>
+                        <option value="Adventure">Adventure</option>
+                        <option value="Mystery">Mystery</option>
+                        <option value="Science Fiction">Science Fiction</option>
+                        <option value="Romance">Romance</option>
+                        <option value="Thriller">Thriller</option>
+                        <option value="Manga">Manga</option>
+                    </select>
+                </div>
                 <input type="hidden" formControlName="reserved">
                 <input type="hidden" formControlName="user">
                 <div class="mb-3">
                     <label for="reservationDuration" class="form-label">Reservation Duration (days)</label>
-                    <input type="number" class="form-control" id="reservationDuration" formControlName="reservationDuration" min="1" max="7"  required>
+                    <input type="number" class="form-control" id="reservationDuration"
+                        formControlName="reservationDuration" min="1" max="7" required>
                 </div>
                 <div class="mb-3">
                     <label for="editorial" class="form-label">Editorial</label>
-                    <select class="form-select"  id="editorial" formControlName="editorial" required>
+                    <select class="form-select" id="editorial" formControlName="editorial" required>
                         @for (editorial of editorials; track $index) {
-                            <option [value]="editorial.id">{{ editorial.editorialName }}</option>
+                        <option [value]="editorial.id">{{ editorial.editorialName }}</option>
                         }
                     </select>
-                  </div>
+                </div>
                 <button type="submit" class="btn btn-primary">Create Book</button>
             </form>
         </div>
