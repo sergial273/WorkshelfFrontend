@@ -42,6 +42,10 @@ button {
   color: aliceblue;
 }
 
+.input-group button:hover {
+  background-color: #741240;
+}
+
 .card {
   width: 150px;
   transition: transform 0.3s ease-in-out;
@@ -100,9 +104,7 @@ button {
   border-bottom-left-radius: 0;
 }
 
-.input-group button:hover {
-  background-color: #741240;
-}
+
 
 .input-group button:focus {
   box-shadow: 0 0 0 0.2rem #741240;
