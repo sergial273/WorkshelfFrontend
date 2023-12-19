@@ -24,6 +24,19 @@ export class BookserviceService {
       return this.http.get<Book[]>(`${AUTH_API}book/paginated?page=${page}&size=${pageSize}`, { params });
   }
 
+  getAllBooksNotPaginated(): Observable<Book[]> {
+      return this.http.get<Book[]>(`${AUTH_API}book/all`);
+  }
+
+  getBooksByGenre(genres: string[], page: number, pageSize: number): Observable<Book[]> {
+    const params = new HttpParams()
+      .set('genres', genres.join(','))
+      .set('page', page.toString())
+      .set('pageSize', pageSize.toString());
+
+    return this.http.get<Book[]>(`${AUTH_API}book/byGenres`, { params });
+}
+
   getBookById(bookId: number): Observable<Book> {
     let bookUrl = `${AUTH_API}book/detail/${bookId}`;
     return this.http.get<Book>(bookUrl);

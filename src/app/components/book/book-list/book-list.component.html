@@ -14,36 +14,13 @@
                 </a>
             </h5>
             <div class="collapse" id="genreFilter">
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="Adventure" id="chkAdventure"
+                @for (genre of genres; track $index) {
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" [value]="genre" [id]="'chk' + genre" (change)="filterBooks(genre)"
                         style="width: 20px; height: 20px;">
-                    <label class="form-check-label" for="chkAdventure">Adventure</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="Mystery" id="chkMystery"
-                        style="width: 20px; height: 20px;">
-                    <label class="form-check-label" for="chkMystery">Mystery</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="ScienceFiction" id="chkScienceFiction"
-                        style="width: 20px; height: 20px;">
-                    <label class="form-check-label" for="chkScienceFiction">Science Fiction</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="Romance" id="chkRomance"
-                        style="width: 20px; height: 20px;">
-                    <label class="form-check-label" for="chkRomance">Romance</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="Classic" id="chkClassic"
-                        style="width: 20px; height: 20px;">
-                    <label class="form-check-label" for="chkClassic">Classic</label>
-                </div>
-                <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" value="MagicRealism" id="chkMagicRealism"
-                        style="width: 20px; height: 20px;">
-                    <label class="form-check-label" for="chkMagicRealism">Magic Realism</label>
-                </div>
+                        <label class="form-check-label" [for]="'chk' + genre">{{ genre }}</label>
+                    </div>
+                }
             </div>
         </div>
     </div>
