@@ -16,7 +16,7 @@ import { HttpHeaders } from '@angular/common/http';
   styleUrl: './userbooklist.component.css'
 })
 export class UserbooklistComponent implements OnInit{
-  loading = true;
+  loading = false;
   books: Book[] = [];
 
   constructor(

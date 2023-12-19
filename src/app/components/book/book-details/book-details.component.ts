@@ -10,13 +10,15 @@ import { TokenStorageService } from '../../../_services/token-storage.service';
 import { RatingService } from '../../../_services/rating/rating.service';
 import { ReservationService } from '../../../_services/reservation/reservation.service';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
     selector: 'app-book-details',
     standalone: true,
     templateUrl: './book-details.component.html',
     styleUrl: './book-details.component.css',
-    imports: [FooterComponent, DatePipe]
+    imports: [FooterComponent, DatePipe, FormsModule]
 })
 export class BookDetailsComponent implements OnInit {
 
@@ -26,6 +28,12 @@ export class BookDetailsComponent implements OnInit {
     ratings: Rating[] = []
     isReservedByCurrentUser: boolean = true;
     isAvailable: boolean = true;
+
+    rating: boolean = false; 
+    stars: number = 1;
+    comment: string = '';
+    ratingToAdd: Rating = new Rating();
+
 
     constructor(
         private route: ActivatedRoute,
@@ -85,11 +93,54 @@ export class BookDetailsComponent implements OnInit {
         this.reservationService.addReservation(book).subscribe(
           (response) => {
             console.log('Reserva exitosa:', response);
-            this.router.navigate(['/']);
+            window.location.reload();
           },
           (error) => {
             console.error('Error al realizar la reserva:', error);
           }
         );
+    }
+    
+    returnBook(book: any) {
+        this.reservationService.returnBookReservation(book).subscribe(
+          (response) => {
+            console.log('Reserva exitosa:', response);
+            window.location.reload();
+          },
+          (error) => {
+            console.error('Error al realizar la reserva:', error);
+        }
+        );
+    }
+    
+    viewBookReservations(book: any) {
+        this.reservationService.returnBookReservation(book);
+        this.router.navigate([`book/${book.id}/reservations`]);
+    }
+  
+    rateBook(book: any){
+        this.rating = true;
+    }
+
+    addRating(){
+        this.reservationService.getReserveByUserAndBook(this.book.id).subscribe(
+            (response) => {
+              console.log('Reserva exitosa:', response);
+              this.ratingToAdd.reservation = response
+
+            },
+            (error) => {
+              console.error('Error:', error);
+            }
+          );
+        this.ratingService.addRating(this.ratingToAdd).subscribe(
+            (response) => {
+              console.log('Reserva exitosa:', response);
+              
+            },
+            (error) => {
+              console.error('Error al realizar la reserva:', error);
+            }
+          );
     }
 }
