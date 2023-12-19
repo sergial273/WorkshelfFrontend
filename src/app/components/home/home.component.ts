@@ -17,37 +17,11 @@ import { DatePipe } from '@angular/common';
 })
 export class HomeComponent implements OnInit {
 
-    currentPage: number = 0;
-    pageSize: number = 8;
-
     books: Book[] = [];
 
     constructor(private bookservice: BookserviceService, private router: Router) { }
 
     ngOnInit(): void {
-        this.getAllBooks();
-    }
-    getAllBooks() {
-        this.bookservice.getAllBooks(this.currentPage, this.pageSize).subscribe((books) => {
-            this.books = books;
-        });
     }
 
-    previousPage() {
-        if (this.currentPage > 0) {
-            this.currentPage--;
-            this.getAllBooks();
-        }
-    }
-
-    nextPage() {
-        if (this.books.length === this.pageSize) {
-            this.currentPage++;
-            this.getAllBooks();
-        }
-    }
-
-    goToBookDetails(id: number) {
-        this.router.navigate(['/book/detail/', id]);
-    }
 }

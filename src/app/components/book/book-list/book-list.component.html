@@ -1,0 +1,76 @@
+<main>
+    <form class="mb-3 search-form mt-3">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search your book here" />
+            <button type="button" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    <div class="row mb-5">
+        <div class="col">
+            <h5>
+                <a href="#genreFilter" role="button" data-bs-toggle="collapse" aria-expanded="false"
+                    aria-controls="genreFilter" class="filter-link">
+                    Filter by Genre <i class="bi bi-chevron-down"></i>
+                </a>
+            </h5>
+            <div class="collapse" id="genreFilter">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="Adventure" id="chkAdventure"
+                        style="width: 20px; height: 20px;">
+                    <label class="form-check-label" for="chkAdventure">Adventure</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="Mystery" id="chkMystery"
+                        style="width: 20px; height: 20px;">
+                    <label class="form-check-label" for="chkMystery">Mystery</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="ScienceFiction" id="chkScienceFiction"
+                        style="width: 20px; height: 20px;">
+                    <label class="form-check-label" for="chkScienceFiction">Science Fiction</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="Romance" id="chkRomance"
+                        style="width: 20px; height: 20px;">
+                    <label class="form-check-label" for="chkRomance">Romance</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="Classic" id="chkClassic"
+                        style="width: 20px; height: 20px;">
+                    <label class="form-check-label" for="chkClassic">Classic</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" value="MagicRealism" id="chkMagicRealism"
+                        style="width: 20px; height: 20px;">
+                    <label class="form-check-label" for="chkMagicRealism">Magic Realism</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-5 g-4">
+        @for (book of books; track $index) {
+        <div class="col mb-4">
+            <div class="card h-100">
+                <img src="{{ book.image }}" class="card-img-top" alt="Book Image" />
+                <div class="card-body text-center">
+                    <h5 class="card-title">{{ book.title }}</h5>
+                    <button [routerLink]="['/details', book.id]" routerLinkActive="router-link-active" type="button"
+                        class="btn btn-primary">More</button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+    <div class="d-flex justify-content-center mt-3 mb-5">
+        <div class="pageButtons">
+            <button type="button" class="btn btn-primary me-2" (click)="previousPage()">Previous</button>
+        </div>
+        <span class="align-self-center">{{ currentPage }}</span>
+        <div class="pageButtons">
+            <button type="button" class="btn btn-primary ms-2" (click)="nextPage()">Next</button>
+        </div>
+    </div>
+</div>

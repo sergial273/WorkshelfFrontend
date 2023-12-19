@@ -14,6 +14,7 @@ import { AdminGuard } from './guards/admin.guard';
 import { BookUpdateComponent } from './components/book/book-update/book-update.component';
 import { UserbooklistComponent } from './components/user/userbooklist/userbooklist.component';
 import { EditorialUpdateComponent } from './components/editorial/editorial-update/editorial-update.component';
+import { BookListComponent } from './components/book/book-list/book-list.component';
 
 
 
@@ -33,6 +34,10 @@ export const routes: Routes = [
     {
         path:'details/:id',
         component:BookDetailsComponent
+    },
+    {
+        path:'book/list',
+        component:BookListComponent
     },
     {
         path:'book/update/:id',
