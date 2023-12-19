@@ -5,17 +5,17 @@
                 <a class="navbar-brand" routerLink="/">
                     <img src="../../../../assets/images/logo.jpg" alt="Logo" height="50" width="50">
                 </a>
-                @if(isRegistered()){
-                    <a class="nav-link" routerLink="/editorial/add">
-                        <i class="bi fs-5 bi-bookmark-plus"></i>
-                        Add Editorial
-                    </a>
-                    <a class="nav-link" routerLink="/book/add">
-                        <i class="bi fs-5 bi-bookmark-plus"></i>
-                        Add Book
-                    </a>
-                }
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            @if(isRegistered()){
+                <a class="nav-link" routerLink="/editorial/add">
+                    <i class="bi fs-5 bi-bookmark-plus"></i>
+                    New Editorial
+                </a>
+                <a class="nav-link" routerLink="/book/add">
+                    <i class="bi fs-5 bi-bookmark-plus"></i>
+                    New Book
+                </a>
+            }
             <ul class="navbar-nav">
                 @if(this.router.url === '/login'){
                     <li class="nav-item">
@@ -54,6 +54,24 @@
                                       <a class="dropdown-item" routerLink="/user" >
                                           <i class="bi fs-5 bi-person-fill-add"></i>
                                           User profile
+                                      </a>
+                                  </li>
+                                  <li class="nav-item me-2">
+                                      <a class="dropdown-item" routerLink="/userreservations" >
+                                          <i class="bi fs-5 bi-person-fill-add"></i>
+                                          My reservations
+                                      </a>
+                                  </li>
+                                  <li class="nav-item me-2">
+                                      <a class="dropdown-item" routerLink="/userbookshare" >
+                                          <i class="bi fs-5 bi-person-fill-add"></i>
+                                          my books' reservations history
+                                      </a>
+                                  </li>
+                                  <li class="nav-item me-2">
+                                      <a class="dropdown-item" routerLink="/userbooklist" >
+                                          <i class="bi fs-5 bi-person-fill-add"></i>
+                                          My books
                                       </a>
                                   </li>
                                   <li class="nav-item">
