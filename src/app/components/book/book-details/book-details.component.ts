@@ -10,13 +10,15 @@ import { TokenStorageService } from '../../../_services/token-storage.service';
 import { RatingService } from '../../../_services/rating/rating.service';
 import { ReservationService } from '../../../_services/reservation/reservation.service';
 import { Router } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+
 
 @Component({
     selector: 'app-book-details',
     standalone: true,
     templateUrl: './book-details.component.html',
     styleUrl: './book-details.component.css',
-    imports: [FooterComponent, DatePipe]
+    imports: [FooterComponent, DatePipe, FormsModule]
 })
 export class BookDetailsComponent implements OnInit {
 
@@ -26,6 +28,11 @@ export class BookDetailsComponent implements OnInit {
     ratings: Rating[] = []
     isReservedByCurrentUser: boolean = true;
     isAvailable: boolean = true;
+
+    rating: boolean = false; 
+    stars: number = 1;
+    comment: string = '';
+
 
     constructor(
         private route: ActivatedRoute,
@@ -103,5 +110,13 @@ export class BookDetailsComponent implements OnInit {
             console.error('Error al realizar la reserva:', error);
           }
         );
+    }
+
+    rateBook(book: any){
+        this.rating = true;
+    }
+
+    addRating(){
+
     }
 }

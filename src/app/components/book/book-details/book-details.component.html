@@ -27,8 +27,7 @@
               @if (isReservedByCurrentUser) {
                 <button class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link" data-type="theme" [attr.data-id]="book.id" (click)="returnBook(book)">Return</button>
             
-              <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
-                data-type="theme" data-id="{{ book.id }}">Rate</a>
+                <button class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link" data-type="theme" [attr.data-id]="book.id" (click)="rateBook(book)">Rate</button>
               }
               <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
                 data-type="theme" data-id="{{ book.id }}">View Reservations</a>
@@ -71,4 +70,28 @@
       </section>
     </div>
   </div>
+  @if(rating){
+    <div id="div-centrado">
+      <form>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Rating:</label>
+          <select class="form-control" id="exampleFormControlSelect1" [(ngModel)]="stars">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">What's your opinion?</label>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="comment"></textarea>
+        </div>
+        <button type="button" class="btn btn-danger" (click)="rating=false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="addRating()">Submit</button>
+      </form>
+    </div>
+  }
 </div>
+
