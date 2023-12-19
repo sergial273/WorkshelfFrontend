@@ -9,19 +9,19 @@
             <p class="text-spacey">Author: <span class="text-merriweather">{{ book.author }}</span></p>
             <p class="text-spacey">Editorial: <span class="text-merriweather">{{ book.editorial.editorialName }}</span></p>
             @if (book.reserved === 0) {
-              <p class="text-spacey">Reservation status: <span class="text-merriweather"></span>Available</p>
+              <p class="text-spacey">Reservation status: <span class="text-merriweather">Available</span></p>
             } @else if (book.reserved === 1) {
-              <p class="text-spacey">Reservation status: <span class="text-merriweather"></span>Reserved</p>
+              <p class="text-spacey">Reservation status: <span class="text-merriweather">Reserved</span></p>
               <p class="text-spacey">Reservation until: <span class="text-merriweather">{{ (book.reservationDuration | date) }}</span></p>
             } @else if (book.reserved === 2) {
-              <p class="text-spacey">Reservation status: <span class="text-merriweather"></span>Lost</p>
+              <p class="text-spacey">Reservation status: <span class="text-merriweather">Lost</span></p>
             } @else if (book.reserved === 3) {
-              <p class="text-spacey">Reservation status: <span class="text-merriweather"></span>Not available</p>
+              <p class="text-spacey">Reservation status: <span class="text-merriweather">Not available</span></p>
             } 
             <div class="mt-3">
               @if (isAvailable) {
-                <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"
-                data-type="theme" data-id="{{ book.id }}">Reserve</a>
+                <button class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link" data-type="theme" [attr.data-id]="book.id" (click)="createReservation(book)">Reserve</button>
+
               }
               @if (isReservedByCurrentUser) {
                 <a href="#" class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link"

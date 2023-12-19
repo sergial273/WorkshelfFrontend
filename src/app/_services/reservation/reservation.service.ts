@@ -29,13 +29,21 @@ export class ReservationService {
     return this.http.get<Reservation[]>(url);
   }
 
+  addReservation(book: any): Observable<any> {
+    const urlReservation = `${AUTH_API}reservation/add`;
+    const token = this.tokenService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<any>(urlReservation, book, { headers });
+  }
+
   getAllResrevation(page: number, pageSize: number, headers: any): Observable<Reservation[]> {
     return this.http.get<Reservation[]>(`${AUTH_API}reservation/paginated?page=${page}&size=${pageSize}`, { headers });
   }
 
   deleteReservation(reservationId: number, headers: any): void {
     let reservationUrl = `${AUTH_API}reservation/delete/${reservationId}`;
-
     this.http.delete(reservationUrl, { headers })
       .subscribe({
         next: data => {
@@ -54,7 +62,6 @@ export class ReservationService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-
     return this.http.get<Reservation>(url, { headers });
   }
 }
