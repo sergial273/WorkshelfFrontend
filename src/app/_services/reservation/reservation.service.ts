@@ -40,7 +40,7 @@ export class ReservationService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.post<any>(urlReservation, book, { headers });
+    return this.http.put<any>(urlReservation, book, { headers });
   }
 
   returnBookReservation(book: any): Observable<any> {
