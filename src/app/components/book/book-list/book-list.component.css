@@ -113,6 +113,14 @@ span {
     font-weight: bold;
 }
 
+.btn-primary:hover {
+    background-color: #ff3385;
+}
+
+.btn-primary:active {
+    background-color: #a7004e;
+}
+
 .filter-link .bi-chevron-down {
     display: none;
 }
