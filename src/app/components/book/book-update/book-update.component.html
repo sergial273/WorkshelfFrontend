@@ -1,50 +1,57 @@
 <div class="container mt-3 mb-5">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h2>Create a Book</h2>
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mx-1 mx-md-4">
-
-                <div class="mb-3 mt-3">
-                    <label for="title" class="form-label">Title</label>
-                    <input type="text" class="form-control" id="title" formControlName="title" required>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card book-card">
+                <div class="card-header">
+                    <h2 class="text-center">Update Book</h2>
                 </div>
-                <div class="mb-3">
-                    <label for="image" class="form-label">Image URL</label>
-                    <input type="text" class="form-control" id="image" formControlName="image" required>
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mx-1 mx-md-4">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Title</label>
+                            <input type="text" class="form-control" id="title" formControlName="title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="image" class="form-label">Image URL</label>
+                            <input type="text" class="form-control" id="image" formControlName="image" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="author" class="form-label">Author</label>
+                            <input type="text" class="form-control" id="author" formControlName="author" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="genre" class="form-label">Genre</label>
+                            <select class="form-select" id="genre" formControlName="genre" required>
+                                <option value="Classic">Classic</option>
+                                <option value="Adventure">Adventure</option>
+                                <option value="Mystery">Mystery</option>
+                                <option value="Science Fiction">Science Fiction</option>
+                                <option value="Romance">Romance</option>
+                                <option value="Thriller">Thriller</option>
+                                <option value="Fantasy">Fantasy</option>
+                                <option value="Magical Realism">Magical realism</option>
+                                <option value="Horror">Horror</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reservationDuration" class="form-label">Reservation Duration (days)</label>
+                            <input type="number" class="form-control" id="reservationDuration"
+                                formControlName="reservationDuration" min="1" max="7" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editorial" class="form-label">Publisher</label>
+                            <select class="form-select" id="editorial" formControlName="editorial" required>
+                                @for (editorial of editorials; track $index) {
+                                <option [value]="editorial.id">{{ editorial.editorialName }}</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-sm">UPDATE</button>
+                        </div>
+                    </form>
                 </div>
-                <div class="mb-3">
-                    <label for="author" class="form-label">Author</label>
-                    <input type="text" class="form-control" id="author" formControlName="author" required>
-                </div>
-                <div class="mb-3">
-                    <label for="genre" class="form-label">Genre</label>
-                    <select class="form-select" id="genre" formControlName="genre" required>
-                      <option value="Adventure" [selected]="form.get('genre')?.value === 'Adventure'">Adventure</option>
-                      <option value="Mystery" [selected]="form.get('genre')?.value === 'Mystery'">Mystery</option>
-                      <option value="Science Fiction" [selected]="form.get('genre')?.value === 'Science Fiction'">Science Fiction</option>
-                      <option value="Romance" [selected]="form.get('genre')?.value === 'Romance'">Romance</option>
-                      <option value="Thriller" [selected]="form.get('genre')?.value === 'Thriller'">Thriller</option>
-                      <option value="Manga" [selected]="form.get('genre')?.value === 'Manga'">Manga</option>
-                    </select>
-                </div>
-                  
-                <input type="hidden" formControlName="reserved">
-                <input type="hidden" formControlName="reservationDate">
-                <input type="hidden" formControlName="user">
-                <div class="mb-3">
-                    <label for="reservationDuration" class="form-label">Reservation Duration (days)</label>
-                    <input type="number" class="form-control" id="reservationDuration" formControlName="reservationDuration" min="1" max="7"  required>
-                </div>
-                <div class="mb-3">
-                    <label for="editorial" class="form-label">Editorial</label>
-                    <select class="form-select"  id="editorial" formControlName="editorial" required>
-                        @for (editorial of editorials; track $index) {
-                            <option [value]="editorial.id" [attr.selected]="editorial.id === selectedEditorialId ? true : null">{{ editorial.editorialName }}</option>
-                        }
-                    </select>
-                  </div>
-                <button type="submit" class="btn btn-primary">Create Book</button>
-            </form>
+            </div>
         </div>
     </div>
 </div>

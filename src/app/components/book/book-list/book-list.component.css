@@ -8,16 +8,17 @@ button {
 }
 
 .card {
-    width: 150px;
+    width: 200px;
     transition: transform 0.3s ease-in-out;
 }
 
 .card:hover {
-    transform: scale(1.05);
+    transform: scale(1.10);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-.card-img-top {
+.custom-card-img {
+    height: 325px;
     object-fit: cover;
 }
 
@@ -78,6 +79,7 @@ button {
     align-items: center;
     text-decoration: none;
     color: black;
+    margin-right: 10px;
 }
 
 .form-check-label {
@@ -109,4 +111,8 @@ button {
 
 span {
     font-weight: bold;
+}
+
+.filter-link .bi-chevron-down {
+    display: none;
 }
