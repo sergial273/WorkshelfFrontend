@@ -51,8 +51,10 @@ h6 span {
     left: -9999px;
 }
 
-.checkbox:checked,label,
-.checkbox:not(:checked),label {
+.checkbox:checked,
+label,
+.checkbox:not(:checked),
+label {
     position: relative;
     display: block;
     text-align: center;
@@ -136,7 +138,7 @@ h6 span {
 .card-back {
     transform: rotateY(180deg);
     background-color: #fadbeb;
-    box-shadow: 2px 4px 8px 2px #e20074, 4px 4px 8px 4px rgba(21, 21, 21, .1), 0 0 20px rgba(0, 0, 0, 0.3); 
+    box-shadow: 2px 4px 8px 2px #e20074, 4px 4px 8px 4px rgba(21, 21, 21, .1), 0 0 20px rgba(0, 0, 0, 0.3);
 }
 
 .checkbox:checked~.card-3d-wrap .card-3d-wrapper {
@@ -278,7 +280,7 @@ h6 span {
     text-align: center;
     border: none;
     background-color: #102770;
-    color: #ffeba7; 
+    color: #ffeba7;
     box-shadow: 0 8px 24px 0 rgba(16, 39, 112, .2);
 }
 
@@ -316,4 +318,39 @@ h6 span {
 
 .text-danger {
     height: 20px;
+}
+
+
+.spinner-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.spinner {
+    border-radius: 50%;
+    width: 220px;
+    height: 140px;
+    animation: pulse 2s infinite alternate;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.5);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
