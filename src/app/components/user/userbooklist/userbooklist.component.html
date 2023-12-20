@@ -5,6 +5,11 @@
                 <div class="card-header bg-primary text-white">
                     <h4>User Book List</h4>
                 </div>
+                @if (loading) {
+                <div class="spinner-container">
+                    <img src="../../../assets/images/spinner.jpg" alt="spinner" class="spinner">
+                </div>
+                }
                 <div class="card-body" id="cardmaster">
                     @if (books.length === 0) {
                     <p class="lead mb-0 text-muted">You do not have any book.</p>
