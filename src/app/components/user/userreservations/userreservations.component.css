@@ -1,3 +1,8 @@
+#cardmaster {
+    max-height: 75vh;
+    overflow-y: scroll;
+}
+
 .card-header {
     background-color: #e20074 !important;
 }
@@ -12,10 +17,6 @@
 .reservation-card:hover {
     color: #080808;
     box-shadow: 0 8px 16px rgba(226, 0, 116, 0.3);
-}
-
-.container {
-    height: 64.8vh;
 }
 
 .text-primary {

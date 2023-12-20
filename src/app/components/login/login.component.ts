@@ -15,10 +15,13 @@ import { JsonPipe } from '@angular/common';
 })
 
 export class LoginComponent implements OnInit {
+
   form: any = {
     username: null,
     password: null,
   };
+
+  loading = false;
   isLoggedIn = false;
   isLoginFailed = false;
   errorMessage = '';
@@ -41,7 +44,7 @@ export class LoginComponent implements OnInit {
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     if (this.tokenStorage.getToken()) {
@@ -57,11 +60,15 @@ export class LoginComponent implements OnInit {
       this.invisLogin = true;
       return;
     }
+
+    this.loading = true;
     const { username, password } = this.form;
     const data: any = await this.authService.login(username, password).toPromise();
 
-    try {
+    setTimeout(async () => {
+      try {
         this.tokenStorage.saveToken(data);
+        console.log("printing", this.loading)
         await this.tokenStorage.saveUser(username);
         this.roles = this.tokenStorage.getUser().role;
         this.tokenStorage.saveRoles(this.roles);
@@ -71,7 +78,10 @@ export class LoginComponent implements OnInit {
       } catch (err: any) {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
+      } finally {
+        this.loading = false;
       }
+    }, 1000);
   }
 
   reloadPage(): void {
@@ -84,8 +94,11 @@ export class LoginComponent implements OnInit {
       this.invis = true;
       return;
     }
-    
+
     const { username, email, password } = this.formReg;
+
+    this.loading = true;
+
     this.authService.register(username, email, password).subscribe(
       (data: any) => {
         this.isSuccessful = true;
@@ -96,7 +109,8 @@ export class LoginComponent implements OnInit {
         this.errorMessageReg = err.error.message;
         this.isSignUpFailed = true;
       }
-    );
+    ).add(() => {
+      this.loading = false;
+    });
   }
-  
 }
