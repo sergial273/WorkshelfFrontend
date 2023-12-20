@@ -52,7 +52,9 @@
                         } 
                         @if (isReservedByCurrentUser && !isAvailable) {
                           <button class="btn btn-primary btn-sm my-2 w-100" data-type="theme" [attr.data-id]="book.id" (click)="returnBook(book)">Return</button>
-                          <button class="btn btn-primary btn-sm my-2 w-100" data-type="theme" [attr.data-id]="book.id" (click)="rateBook(book)">Rate</button>
+                          @if (canComment) {
+                            <button class="btn btn-primary btn-sm my-2 w-100" data-type="theme" [attr.data-id]="book.id" (click)="rateBook(book)">Rate</button>
+                          }
                         }
                       }
 

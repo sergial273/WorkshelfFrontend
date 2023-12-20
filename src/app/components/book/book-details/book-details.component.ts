@@ -37,6 +37,7 @@ export class BookDetailsComponent implements OnInit {
     stars: number = 1;
     comment: string = '';
     ratingToAdd: Rating = new Rating();
+    canComment: boolean = true;
 
     constructor(
         private route: ActivatedRoute,
@@ -100,6 +101,7 @@ export class BookDetailsComponent implements OnInit {
         this.ratingService.getRatingsByBookId(this.bookId).subscribe(
             (data: Rating[]) => {
                 this.ratings = data;
+                this.checkComment();
             },
             (error) => {
                 console.error('Error fetching ratings:', error);
@@ -159,5 +161,16 @@ export class BookDetailsComponent implements OnInit {
           (error) => {
             console.error('Error al realizar la reserva:', error);
           });
+    }
+
+    checkComment(){
+      const currentUser = this.tokenStorage.getUser();
+      const hasComment = this.ratings.some(rating => rating.user.userId === currentUser.userId);
+
+      if (hasComment) {
+        this.canComment = false;
+      } else {
+        this.canComment = true;
+      }
     }
 }
