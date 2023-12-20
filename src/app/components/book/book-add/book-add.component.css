@@ -19,6 +19,14 @@ body{
     border-bottom: 1px solid #dee2e6;
 }
 
+.btn-primary:hover {
+    background-color: #ff3385;
+}
+
+.btn-primary:active {
+    background-color: #a7004e;
+}
+
 .btn-primary {
     font-weight: bold;
     background-color: #e20074;
@@ -38,3 +46,5 @@ body{
     text-align: center;
     margin: 0px;
 }
+
+
