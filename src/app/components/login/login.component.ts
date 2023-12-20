@@ -30,6 +30,9 @@ export class LoginComponent implements OnInit {
     password: null,
   };
 
+  invis: boolean = false;
+  invisLogin: boolean = false;
+
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessageReg = '';
@@ -49,6 +52,12 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmitLogin(): Promise<void> {
+
+    if (!this.form.username || !this.form.password) {
+      console.log('All fields are required');
+      this.invisLogin = true;
+      return;
+    }
     const { username, password } = this.form;
     const data: any = await this.authService.login(username, password).toPromise();
 
@@ -71,7 +80,14 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitReg(): void {
-    const { username, email, password } = this.form;
+
+    if (!this.formReg.username || !this.formReg.email || !this.formReg.password) {
+      console.log('All fields are required');
+      this.invis = true;
+      return;
+    }
+    
+    const { username, email, password } = this.formReg;
     this.authService.register(username, email, password).subscribe(
       (data: any) => {
         this.isSuccessful = true;
@@ -79,9 +95,10 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/login']);
       },
       (err: any) => {
-        this.errorMessage = err.error.message;
+        this.errorMessageReg = err.error.message;
         this.isSignUpFailed = true;
       }
     );
   }
+  
 }

@@ -72,8 +72,8 @@ h6 span {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    color: whitesmoke;
-    background-color: #102770;
+    color: #102770;
+    background-color: #fadbeb;
     font-family: 'unicons';
     content: '\eb4f';
     z-index: 20;
@@ -119,8 +119,8 @@ h6 span {
     background-position: bottom center;
     background-repeat: no-repeat;
     background-size: 300%;
-    background-color: #f252a7; 
-    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2), 0 6px 20px 0 rgba(21, 21, 21, .1);
+    background-color: #fadbeb;
+    box-shadow: 4px 4px 8px 4px #e20074, 4px 4px 8px 4px rgba(21, 21, 21, .1), 0 0 20px rgba(0, 0, 0, 0.3);
     position: absolute;
     border-radius: 6px;
     left: 0;
@@ -135,8 +135,8 @@ h6 span {
 
 .card-back {
     transform: rotateY(180deg);
-    background-color: orange; 
-    box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2), 0 6px 20px 0 rgba(21, 21, 21, .1);
+    background-color: white;
+    box-shadow: 2px 4px 8px 2px #e20074, 4px 4px 8px 4px rgba(21, 21, 21, .1), 0 0 20px rgba(0, 0, 0, 0.3); 
 }
 
 .checkbox:checked~.card-3d-wrap .card-3d-wrapper {
