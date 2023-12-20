@@ -37,6 +37,15 @@ export class BookserviceService {
     return this.http.get<Book[]>(`${AUTH_API}book/byGenres`, { params });
 }
 
+getBooksBySearchTitle(search: string, page: number, pageSize: number): Observable<Book[]> {
+  const params = new HttpParams()
+    .set('title', search)
+    .set('page', page.toString())
+    .set('pageSize', pageSize.toString());
+
+  return this.http.get<Book[]>(`${AUTH_API}book/searchByTitle`, { params });
+}
+
   getBookById(bookId: number): Observable<Book> {
     let bookUrl = `${AUTH_API}book/detail/${bookId}`;
     return this.http.get<Book>(bookUrl);

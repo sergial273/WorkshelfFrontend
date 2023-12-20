@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../models/book/book.model';
 import { BookserviceService } from '../../../_services/book/bookservice.service';
 import { Router, RouterLink } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-book-list',
   standalone: true,
-  imports: [RouterLink,FormsModule],
+  imports: [RouterLink,FormsModule,ReactiveFormsModule],
   templateUrl: './book-list.component.html',
   styleUrl: './book-list.component.css'
 })
@@ -21,7 +21,13 @@ export class BookListComponent implements OnInit {
   genres: string[] = ['Adventure', 'Mystery', 'Science Fiction', 'Romance', 'Classic', 'Magical Realism']
   selectedGenres: string[] = [];
 
-  constructor(private bookservice: BookserviceService, private router: Router) { }
+  form: FormGroup; 
+
+  constructor(private bookservice: BookserviceService, private router: Router, private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      searchTerm: [null],
+    });
+   }
 
   ngOnInit(): void {
     this.getAllBooks();
@@ -69,6 +75,9 @@ export class BookListComponent implements OnInit {
   }
 
   filterBooks(genre:string) {
+    this.form.reset({
+      searchTerm: ''
+    });
     this.currentPage = 0;
     
     if(this.selectedGenres.includes(genre)){
@@ -84,5 +93,19 @@ export class BookListComponent implements OnInit {
     else{
       this.getBooksByGenre();
     }
+  }
+
+  onSubmit(){
+    this.currentPage = 0;
+    const formData = this.form.value;
+    const searchTermValue = formData.searchTerm;
+
+
+    this.bookservice.getBooksBySearchTitle(searchTermValue, this.currentPage, this.pageSize).subscribe((books) => {
+      this.books = books;
+    },
+    (error) => {
+      this.books = [];
+    });
   }
 }
