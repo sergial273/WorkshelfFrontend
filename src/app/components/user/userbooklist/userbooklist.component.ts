@@ -5,6 +5,8 @@ import { BookserviceService } from '../../../_services/book/bookservice.service'
 import { TokenStorageService } from '../../../_services/token-storage.service';
 import { NavbarComponent } from '../../shared/navbar/navbar.component';
 import { FooterComponent } from '../../shared/footer/footer.component';
+import { Router } from '@angular/router';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-userbooklist',
@@ -14,19 +16,22 @@ import { FooterComponent } from '../../shared/footer/footer.component';
   styleUrl: './userbooklist.component.css'
 })
 export class UserbooklistComponent implements OnInit{
-
+  loading = false;
   books: Book[] = [];
 
-  constructor(private userService: UserService, private bookService: BookserviceService, private tokenStorage: TokenStorageService){}
+  constructor(
+    private userService: UserService, 
+    private bookService: BookserviceService, 
+    private tokenStorage: TokenStorageService,
+    private token: TokenStorageService,
+    private router: Router){}
 
   ngOnInit(): void {
-  
     const userId = this.tokenStorage.getUser();
-    
     this.bookService.getBookByUserId(userId).subscribe(
       (books: any) => {
-        console.log(this.books);
         this.books = books;
+        console.log(this.books);
       },
       (error) => {
         console.error('Error fetching user books: ', error);
@@ -34,4 +39,30 @@ export class UserbooklistComponent implements OnInit{
     );
   }
 
+  editBook(bookId: number) {
+    const updatedRoute = `/book/update/${bookId}`;
+    this.router.navigate([updatedRoute]);
+  }
+
+  detailBook(bookId: number) {
+    const updatedRoute = `/details/${bookId}`;
+    this.router.navigate([updatedRoute]);
+  }
+
+  async deleteBook(book: any) {
+    console.log(book)
+    if (book.reserved === 0) {
+      this.loading = true;
+      const tokent = this.token.getToken();
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${tokent}`,
+      });
+
+      this.bookService.deleteBook(book.id, headers);
+      await new Promise((f) => setTimeout(f, 1000));
+      window.location.reload();
+    } else {
+      alert("Can't delete a reserved book!");
+    }
+  }
 }

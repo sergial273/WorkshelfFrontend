@@ -12,7 +12,7 @@ import { TokenStorageService } from '../token-storage.service';
 })
 export class ReservationService {
 
-  constructor(private http: HttpClient,private tokenService: TokenStorageService) { }
+  constructor(private http: HttpClient, private tokenService: TokenStorageService) { }
 
   getReservationsByUser(user: User): Observable<Reservation> {
     let resURL = `${AUTH_API}reservation/reserveByUserId`;
@@ -21,29 +21,73 @@ export class ReservationService {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    return this.http.get<Reservation>(resURL, {headers});
+    return this.http.get<Reservation>(resURL, { headers });
   }
 
   getReservationsByBook(book: Book): Observable<Reservation[]> {
     const url = `${AUTH_API}reservation/reserveByBookId/${book.id}`;
     return this.http.get<Reservation[]>(url);
-}
-
-    getAllResrevation(page: number, pageSize: number, headers: any): Observable<Reservation[]> {
-      return this.http.get<Reservation[]>(`${AUTH_API}reservation/paginated?page=${page}&size=${pageSize}`, { headers });
   }
 
-  deleteReservation(reservationId: number, headers: any): void{
+  getReservationsByBookNotPaginated(book: Book): Observable<Reservation[]> {
+    const url = `${AUTH_API}reservation/reserveByBookIdNotPaginated/${book.id}`;
+    return this.http.get<Reservation[]>(url);
+  }
+
+  addReservation(book: any): Observable<any> {
+    const urlReservation = `${AUTH_API}reservation/add`;
+    const token = this.tokenService.getToken();
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.post<any>(urlReservation, book, { headers });
+  }
+
+  returnBookReservation(book: any): Observable<any> {
+    const urlReservation = `${AUTH_API}reservation/book/return`;
+    const token = this.tokenService.getToken();
+    console.log(book)
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.put<any>(urlReservation, book, { headers });
+  }
+
+  getAllResrevation(page: number, pageSize: number, headers: any): Observable<Reservation[]> {
+    return this.http.get<Reservation[]>(`${AUTH_API}reservation/paginated?page=${page}&size=${pageSize}`, { headers });
+  }
+
+  deleteReservation(reservationId: number, headers: any): void {
     let reservationUrl = `${AUTH_API}reservation/delete/${reservationId}`;
-
     this.http.delete(reservationUrl, { headers })
-        .subscribe({
-            next: data => {
-            },
-            error: error => {
-                var errorMessage = error.message;
-                console.error('There was an error!', error);
-            }
-        });
+      .subscribe({
+        next: data => {
+        },
+        error: error => {
+          var errorMessage = error.message;
+          console.error('There was an error!', error);
+        }
+      });
+  }
+
+  getBookSharing(user: User): Observable<any> {
+    const url = `${AUTH_API}reservation/user-owned-books`;
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Reservation>(url, { headers });
+  }
+
+  getReserveByUserAndBook(id:number): Observable<Reservation>{
+    const url = `${AUTH_API}reservation/reserveByUserAndBook/`+id;
+    const token = this.tokenService.getToken();
+
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+    return this.http.get<Reservation>(url,{ headers });
   }
 }
+

@@ -15,12 +15,14 @@ import { TokenStorageService } from '../../../_services/token-storage.service';
 })
 export class BookUpdateComponent {
   editorials: Editorial[] = [];
+  selectedEditorialId: number = 0;
   book: any;
 
   form: FormGroup = this.formBuilder.group({
     title: [null],
     image: [null],
     author: [null],
+    genre: [null],
     reserved: [0],
     reservationDuration: [0],
     user: [this.tokenService.getUser()],
@@ -53,14 +55,16 @@ export class BookUpdateComponent {
   }
 
   private initializeForm() {
+    const selectedEditorialId = this.book.editorial.id;
     this.form.patchValue({
       title: this.book.title || '', 
       image: this.book.image || '',
       author: this.book.author || '',
+      genre: this.book.genre || '',
       reserved: this.book.reserved || '',
       reservationDuration: this.book.reservationDuration || '',
       user: this.book.user || '',
-      editorial: this.book.editorial || '',
+      editorial: selectedEditorialId || '',
     });
   }
 

@@ -1,0 +1,112 @@
+button {
+    background-color: #e20074;
+    color: aliceblue;
+}
+
+.input-group button:hover {
+    background-color: #741240;
+}
+
+.card {
+    width: 150px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    object-fit: cover;
+}
+
+.card-body .btn-primary {
+    background-color: #e20074;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.card-body .btn-primary:hover {
+    background-color: #741240;
+}
+
+.d-flex .btn-primary {
+    background-color: #e20074;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.d-flex .btn-primary:hover {
+    background-color: #741240;
+}
+
+.search-form {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.input-group {
+    position: relative;
+}
+
+.input-group input {
+    border-radius: 2px solid;
+}
+
+.input-group button {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+
+.input-group button:focus {
+    box-shadow: 0 0 0 0.2rem #741240;
+}
+
+.filter-link {
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: black;
+}
+
+.form-check-label {
+    margin-left: 5px;
+    text-align: center;
+    justify-content: center;
+
+}
+
+.form-check-input:checked {
+    background-color: #e20074;
+    border: 2px solid white;
+}
+
+#genreFilter {
+    justify-content: center;
+    gap: 15px;
+}
+
+.filter-link:hover {
+    text-decoration: none;
+    color: #e20074;
+}
+
+.d-flex .button-container {
+    display: flex;
+    align-items: center;
+}
+
+span {
+    font-weight: bold;
+}

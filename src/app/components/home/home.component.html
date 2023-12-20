@@ -1,36 +1,15 @@
 <div class="container">
-  <header>
-    <h1 class="display-4">Workshelf</h1>
-    <hr />
-    <p>Share your book and improve our environment</p>
+  <header class="text-center my-5">
+    <img src="../../../assets/images/bigLogo.jpg" alt="Logo" class="img-fluid" />
+    <hr class="my-4">
+    <p>Share your book and improve our environment
+      <img src="../../../assets/images/eco.jpg" alt="Icon" class="img-icon" height="50" width="50" />
+    </p>
   </header>
   <main>
-    <form>
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Search your book here"
-      />
-    </form>
-  </main>
-</div>
-<div class="container-fluid">
-  <div class="row d-flex align-items-center">
-    @for (book of books; track $index) {
-      <div class="col-md-3 mb-3">
-        <div class="card shadow-lg p-1 mb-5 bg-white rounde mx-auto" style="width: 18rem">
-          <img class="card-img-top" [src]="book.image" alt="Img error" />
-          <div class="card-body text-center">
-            <h5 class="card-title text-center mb-2">{{ book.title }}</h5>
-            <button [routerLink]="['/details', book.id]" routerLinkActive="router-link-active" type="button" class="btn btn-primary">More</button>
-          </div>
-        </div>
+    <form class="mb-3 search-form">
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder="Search your book here" />
+        <button type="button" class="btn btn-primary">Search</button>
       </div>
-    }
-  </div>
-  <div class="d-flex justify-content-center mt-3 mb-5">
-    <button type="button" class="btn btn-primary me-2" (click)="previousPage()">Previous</button>
-    <span class="align-self-center">{{ currentPage }}</span>
-    <button type="button" class="btn btn-primary ms-2" (click)="nextPage()">Next</button>
-  </div>
-</div>
+    </form>

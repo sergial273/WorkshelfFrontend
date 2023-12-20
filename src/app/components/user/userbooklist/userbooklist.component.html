@@ -1,21 +1,31 @@
 <div class="container mt-5 mb-5">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <div class="card">
-                <div class="card-header">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white">
                     <h4>User Book List</h4>
                 </div>
                 <div class="card-body">
                     @if (books.length === 0) {
-                        <p>You do not have any book.</p>
-                    }
+                    <p class="mb-0">You do not have any book.</p>
+                    } @else {
                     @for (book of books; track $index) {
-                        <div>
-                            <div class="mb-3">
-                                <h5>{{ book.title }}</h5>
-                                <p>{{ book.author }}</p>
-                            </div>
+                    <div class="mb-3 book-card">
+                        <h5 class="font-weight-bold">Book Title: {{ book.title }}</h5>
+                        <p class="font-weight-bold">Book Author: {{ book.author }}</p>
+                        @if(book.reserved == 1){
+                        <p class="text-danger mb-0 font-weight-bold">Book Status: Reserved</p>
+                        } @else {
+                        <p class="text-success mb-0 font-weight-bold"> Book Status: Available</p>
+                        }
+                        <div class="btn-group" role="group">
+                            <button (click)="editBook(book.id)" type="button" class="btn btn-primary">Edit</button>
+                            <button (click)="detailBook(book.id)" type="button" class="btn btn-primary">Detail</button>
+                            <button (click)="deleteBook(book)" type="button" class="btn btn-danger">Delete</button>
                         </div>
+                        <hr class="my-2">
+                    </div>
+                    }
                     }
                 </div>
             </div>

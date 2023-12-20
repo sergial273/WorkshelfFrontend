@@ -2,6 +2,21 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+    position: relative;
+}
+
+#div-centrado {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000; 
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 60%;
 }
 
 .jumbotron {
@@ -10,6 +25,7 @@
     color: #343a40;
     margin-bottom: 0;
     border-radius: 0;
+    display: flex;
 }
 
 .img {
@@ -36,17 +52,48 @@
     width: 100%;
 }
 
-.row{
-    align-items: center;
-    justify-content: center;
+.row {
+    display: flex;
+    width: 100%; 
 }
 
-.full-star{
+.full-star {
     color: gold;
 
 }
 
-.empty-star{
+.empty-star {
     color: gray;
 
+}
+
+.book-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 2px solid;
+}
+
+.card-img-top {
+    align-items: center;
+    justify-content: center;
+    height: 250px;
+    width: 200px;
+}
+
+.card-img-top img {
+    height: 100% !important;
+}
+
+.card-body h2 {
+    font-size: 2.5rem;
+}
+
+.col-md-12 {
+    flex: 0 0 100%;
+    height: 375px;
+    max-width: 100%;;
+}
+
+#comments { 
+    width: 200px;
 }
