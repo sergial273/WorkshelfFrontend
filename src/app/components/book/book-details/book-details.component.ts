@@ -109,12 +109,12 @@ export class BookDetailsComponent implements OnInit {
         );
     }
 
-    getStarArray(score: number): any[] {
-        const fullStars = Math.floor(score);
-        const starArray = Array(fullStars).fill('full-star');
-        
-        return starArray;
-    }
+    getStarArray(score: number, totalStars: number): any[] {
+      const fullStars = Math.floor(score);
+      const starArray = Array(totalStars).fill(''); // Cambiado de 'full-star' a ''
+  
+      return starArray;
+  }
 
     createReservation(book: any) {
         this.reservationService.addReservation(book).subscribe(
