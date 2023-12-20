@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #e20074;
+    background-color: #e20074 !important;
     height: 60px;
 }
 
@@ -59,9 +59,13 @@ img{
   }
   
 
-@media (max-width: 750px) {
+@media (max-width: 987px) {
     .navbar-toggler {
         border: none;
+    }
+
+    .navbar .navbar-toggler-icon {
+        margin-bottom: 15px;
     }
 
     .navbar-nav .nav-item {

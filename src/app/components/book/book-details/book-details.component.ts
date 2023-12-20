@@ -28,16 +28,16 @@ export class BookDetailsComponent implements OnInit {
     bookId: number = 0;
     bookDetails: any;
     ratings: Rating[] = []
+    reservations: Reservation[] = [];
     isReservedByCurrentUser: boolean = false;
     isAvailable: boolean = true;
-
+    isUserLogged: boolean = false;
+    isUserBookOwner: boolean = false;
     rating: boolean = false; 
     stars: number = 1;
     comment: string = '';
     ratingToAdd: Rating = new Rating();
-
-    reservations: Reservation[] = [];
-
+    canComment: boolean = true;
 
     constructor(
         private route: ActivatedRoute,
@@ -62,7 +62,6 @@ export class BookDetailsComponent implements OnInit {
       this.bookservice.getBookById(this.bookId).pipe(
         switchMap((data) => {
           this.book = data;
-    
           return this.reservationService.getReservationsByBookNotPaginated(this.book);
         }),
         finalize(() => {
@@ -91,17 +90,18 @@ export class BookDetailsComponent implements OnInit {
     checkIfs(){
       this.isAvailable = this.book.reserved === 0;
           if (this.tokenStorage.getToken() !== null ) {
+              this.isUserLogged = true;
               const currentUser = this.tokenStorage.getUser();
-              
               const activeReservation = this.findActiveReservation()
-
               this.isReservedByCurrentUser = activeReservation?.user.userId === currentUser.userId;
+              this.isUserBookOwner = this.book.user.userId == currentUser.userId;
           }
     }
     loadRatings(): void {
         this.ratingService.getRatingsByBookId(this.bookId).subscribe(
             (data: Rating[]) => {
                 this.ratings = data;
+                this.checkComment();
             },
             (error) => {
                 console.error('Error fetching ratings:', error);
@@ -111,7 +111,7 @@ export class BookDetailsComponent implements OnInit {
 
     getStarArray(score: number, totalStars: number): any[] {
       const fullStars = Math.floor(score);
-      const starArray = Array(totalStars).fill(''); // Cambiado de 'full-star' a ''
+      const starArray = Array(totalStars).fill('');
   
       return starArray;
   }
@@ -161,5 +161,16 @@ export class BookDetailsComponent implements OnInit {
           (error) => {
             console.error('Error al realizar la reserva:', error);
           });
+    }
+
+    checkComment(){
+      const currentUser = this.tokenStorage.getUser();
+      const hasComment = this.ratings.some(rating => rating.user.userId === currentUser.userId);
+
+      if (hasComment) {
+        this.canComment = false;
+      } else {
+        this.canComment = true;
+      }
     }
 }

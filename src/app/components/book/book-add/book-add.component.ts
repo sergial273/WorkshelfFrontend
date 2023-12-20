@@ -18,6 +18,8 @@ import { TokenStorageService } from '../../../_services/token-storage.service';
 export class BookAddComponent implements OnInit {
   editorials: Editorial[] = [];
 
+  invis: boolean = false;
+
   form: FormGroup = this.formBuilder.group({
     title: [null],
     image: [null],
@@ -38,6 +40,17 @@ export class BookAddComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      title: [null, Validators.required],
+      image: [null, Validators.required],
+      author: [null, Validators.required],
+      genre: [null, Validators.required],
+      reserved: [0],
+      reservationDuration: [0, Validators.required],
+      user: [this.tokenService.getUser()],
+      editorial: [null, Validators.required],
+    });
+
     this.editorialService.getAllEditorials().subscribe(
       (editorials: Editorial[]) => {
         this.editorials = editorials;
@@ -50,10 +63,15 @@ export class BookAddComponent implements OnInit {
   }
 
   onSubmit() {
+    const isFormEmpty = Object.values(this.form.value).some(value => value === null || value === '');
+
+    if (isFormEmpty) {
+      console.log('All fields are required');
+      this.invis = true;
+      return;
+    }
     const formData = this.form.value;
     const editorialId = formData.editorial;
-    console.log(editorialId)
-    console.log(typeof(formData.editorialId))
 
     this.editorialService.getEditorialByIdString(editorialId).subscribe(
       (editorial: any) => {

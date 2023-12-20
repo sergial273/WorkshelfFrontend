@@ -11,6 +11,9 @@
                             <label for="editorialName" class="form-label">Tell us it's name</label>
                             <input type="text" class="form-control small-input" id="editorialName"
                                 formControlName="editorialName" required>
+                            @if (invis) {
+                                <div class="text-danger mt-2">Name is required</div>
+                            }
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-sm">CREATE</button>

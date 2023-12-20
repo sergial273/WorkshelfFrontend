@@ -18,7 +18,7 @@ import { BookserviceService } from '../../../_services/book/bookservice.service'
   styleUrl: './userbookshare.component.css',
 })
 export class UserbookshareComponent implements OnInit {
-  reservations: any;
+  reservations: any = [];
 
   constructor(
     private reservationService: ReservationService,
