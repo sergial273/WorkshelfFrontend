@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Book } from '../../../models/book/book.model';
 import { BookserviceService } from '../../../_services/book/bookservice.service';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, FormsModule,ReactiveFormsModule } from '@angular/forms';
 
 @Component({
@@ -23,14 +23,32 @@ export class BookListComponent implements OnInit {
 
   form: FormGroup; 
 
-  constructor(private bookservice: BookserviceService, private router: Router, private formBuilder: FormBuilder) {
+  constructor(private bookservice: BookserviceService, private router: Router, private formBuilder: FormBuilder, private route: ActivatedRoute,) {
     this.form = this.formBuilder.group({
       searchTerm: [null],
     });
    }
 
   ngOnInit(): void {
-    this.getAllBooks();
+    this.route.paramMap.subscribe(params => {
+
+      if (params.has('search')) {
+        if(params.get('search') === 'null'){
+          this.getAllBooks();
+        }
+        else{
+          const search = params.get('search');
+          this.form.patchValue({
+            searchTerm: search,
+          });
+          this.onSubmit();
+        }
+      }
+      else{
+        this.getAllBooks();
+      }
+    });
+    
   }
 
   getAllBooks() {

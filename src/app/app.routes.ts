@@ -35,6 +35,10 @@ export const routes: Routes = [
         component:BookListComponent
     },
     {
+        path:'book/list/:search',
+        component:BookListComponent
+    },
+    {
         path:'book/update/:id',
         component:BookUpdateComponent
     },
