@@ -29,7 +29,6 @@ export class UserbookshareComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Obtener el parámetro de la ruta
     this.route.url.subscribe((segments) => {
       if (segments.some((segment) => segment.path === 'userbookshare')) {
         console.log('userbooklist');

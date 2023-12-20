@@ -8,7 +8,7 @@ button {
 }
 
 .card {
-    width: 200px;
+    width: 220px;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -18,7 +18,7 @@ button {
 }
 
 .custom-card-img {
-    height: 325px;
+    height: 340px;
     object-fit: cover;
 }
 
