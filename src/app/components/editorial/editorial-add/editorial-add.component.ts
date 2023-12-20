@@ -20,7 +20,7 @@ export class EditorialAddComponent {
     private editorialService: EditorialService,
   ) {
     this.form = this.formBuilder.group({
-      editorialName: [null],
+      searchTerm: [null],
     });
   }
 
