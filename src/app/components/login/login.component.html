@@ -3,7 +3,7 @@
     <div class="row full-height justify-content-center">
       <div class="col-12 text-center align-self-center py-5">
         <div class="section pb-5 pt-5 pt-sm-2 text-center">
-          <h6 class="mb-0 pb-3"><span>LOG IN </span><span>SIGN UP</span></h6>
+          <h6 class="mb-0 pb-3"><span>LOG IN</span><span>SIGN UP</span></h6>
           <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
           <label for="reg-log"></label>
           <div class="card-3d-wrap mx-auto">
@@ -11,8 +11,7 @@
               <div class="card-front">
                 <div class="center-wrap">
                   <div class="section text-center">
-                    <h4 class="mb-4 pb-3">Log In</h4>
-                    
+                    <img src="../../../assets/images/login.jpg" alt="Login" height="110px" width="160px">
                     @if (!isLoggedIn) {
                       <form name="form" #f="ngForm" class="mx-1 mx-md-4">
                         <div class="form-group">
@@ -59,27 +58,27 @@
               <div class="card-back">
                 <div class="center-wrap">
                   <div class="section text-center">
-                    <h4 class="mb-4 pb-3">Sign Up</h4>
+                    <img src="../../../assets/images/singup.jpg" alt="Login" height="110px">
                     @if (!isSuccessful) {
                       <form name="formReg" #f="ngForm" class="mx-1 mx-md-4" (ngSubmit)="onSubmitReg()">
                         <div class="form-group">
                           <input type="text" id="form3Example1c" placeholder="Your Username" name="username" [(ngModel)]="formReg.username" #username="ngModel" class="form-control" autocomplete="off">
                           @if (f.submitted && !formReg.username) {
-                            <div class="text-danger mt-2">Username is required</div>
+                            <div class="text-danger mt-1">Username is required</div>
                           }
                           <i class="input-icon uil uil-user"></i>
                         </div>
-                        <div class="form-group mt-2">
+                        <div class="form-group mt-1">
                           <input type="email" id="form3Example3c" placeholder="Your Email" name="email" [(ngModel)]="formReg.email" #email="ngModel" class="form-control" autocomplete="off">
                           @if (f.submitted && !formReg.email) {
                             <div class="text-danger mt-2">Email is required</div>
                           }
                           <i class="input-icon uil uil-at"></i>
                         </div>
-                        <div class="form-group mt-2">
+                        <div class="form-group mt-1">
                           <input type="password" id="form3Example4c" placeholder="Your Password" name="password" [(ngModel)]="formReg.password" #password="ngModel" class="form-control" autocomplete="off">
                           @if (f.submitted && !formReg.password) {
-                            <div class="text-danger mt-2">Password is required</div>
+                            <div class="text-danger mt-1 mb-0">Password is required</div>
                           }
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
