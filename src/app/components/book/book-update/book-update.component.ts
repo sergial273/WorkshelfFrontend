@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms'; 
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookserviceService } from '../../../_services/book/bookservice.service';
@@ -13,7 +13,7 @@ import { TokenStorageService } from '../../../_services/token-storage.service';
   templateUrl: './book-update.component.html',
   styleUrl: './book-update.component.css'
 })
-export class BookUpdateComponent {
+export class BookUpdateComponent implements OnInit {
   editorials: Editorial[] = [];
   selectedEditorialId: number = 0;
   book: any;
@@ -71,7 +71,16 @@ export class BookUpdateComponent {
   getBookDetails(bookId: number) {
     this.bookService.getBookById(bookId).subscribe((data: any) => {
       this.book = data;
+
+      const currentUser = this.tokenService.getUser();
+
+      if(this.book.user.userId !== currentUser.userId){
+        this.router.navigate(['/book/list']);
+      }
       this.initializeForm();
+    },
+    (error: any) => {
+      this.router.navigate(['/book/list']);
     });
   }
 
