@@ -36,6 +36,14 @@
     background-color: #007bff;
 }
 
+select::-ms-expand {
+    display: none;
+}
+
+.dropdown-toggle::after {
+    display:none;
+}
+
 .bi {
     height: 30px;
     width: 30px;
