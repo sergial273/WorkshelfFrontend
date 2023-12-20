@@ -29,6 +29,11 @@ export class ReservationService {
     return this.http.get<Reservation[]>(url);
   }
 
+  getReservationsByBookNotPaginated(book: Book): Observable<Reservation[]> {
+    const url = `${AUTH_API}reservation/reserveByBookIdNotPaginated/${book.id}`;
+    return this.http.get<Reservation[]>(url);
+  }
+
   addReservation(book: any): Observable<any> {
     const urlReservation = `${AUTH_API}reservation/add`;
     const token = this.tokenService.getToken();

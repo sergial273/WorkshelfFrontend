@@ -60,7 +60,7 @@
                   <div class="mt-3">
                     @if (isAvailable) {
                       <button class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link" data-type="theme" [attr.data-id]="book.id" (click)="createReservation(book)">Reserve</button>
-                    } @if (isReservedByCurrentUser) {
+                    } @if (isReservedByCurrentUser && !isAvailable) {
                       <button class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link" data-type="theme" [attr.data-id]="book.id" (click)="returnBook(book)">Return</button>
                     <button class="btn btn-dark btn-lg my-2 mr-2 text-oswald btn-wide js-ht-download-link" data-type="theme" [attr.data-id]="book.id" (click)="rateBook(book)">Rate</button>
                     }
