@@ -36,6 +36,8 @@ export class BookDetailsComponent implements OnInit {
     comment: string = '';
     ratingToAdd: Rating = new Rating();
 
+    reservations: Reservation[] = [];
+
 
     constructor(
         private route: ActivatedRoute,
@@ -58,13 +60,17 @@ export class BookDetailsComponent implements OnInit {
 
     loadBookDetails(): void {
       this.bookservice.getBookById(this.bookId).pipe(
+        switchMap((data) => {
+          this.book = data;
+    
+          return this.reservationService.getReservationsByBookNotPaginated(this.book);
+        }),
         finalize(() => {
           this.checkIfs();
         })
       ).subscribe(
-        (data) => {
-          this.book = data;
-          console.log(this.book)
+        (reservations) => {
+          this.reservations = reservations;
         },
         (error) => {
           console.error('Error fetching book details:', error);
@@ -75,8 +81,7 @@ export class BookDetailsComponent implements OnInit {
     findActiveReservation(): Reservation | undefined {
       const currentDate = new Date();
       
-      console.log('AAAAAAA'+this.book.reservation)
-      const activeReservation = this.book.reservation.find(reservation => {
+      const activeReservation = this.reservations.find(reservation => {
         return currentDate <= new Date(reservation.returnDate);
       });
   
@@ -90,7 +95,6 @@ export class BookDetailsComponent implements OnInit {
               
               const activeReservation = this.findActiveReservation()
 
-              console.log(activeReservation?.user.userId)
               this.isReservedByCurrentUser = activeReservation?.user.userId === currentUser.userId;
           }
     }
@@ -115,7 +119,6 @@ export class BookDetailsComponent implements OnInit {
     createReservation(book: any) {
         this.reservationService.addReservation(book).subscribe(
           (response) => {
-            console.log('Reserva exitosa:', response);
             window.location.reload();
           },
           (error) => {
@@ -127,7 +130,6 @@ export class BookDetailsComponent implements OnInit {
     returnBook(book: any) {
         this.reservationService.returnBookReservation(book).subscribe(
           (response) => {
-            console.log('Reserva exitosa:', response);
             window.location.reload();
           },
           (error) => {
