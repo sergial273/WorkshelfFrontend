@@ -7,9 +7,9 @@
     </p>
   </header>
   <main>
-    <form class="mb-3 search-form">
+    <form class="mb-3 search-form" [formGroup]="form" (ngSubmit)="onSubmit()" >
       <div class="input-group">
-        <input type="text" class="form-control" placeholder="Search your book here" />
-        <button type="button" class="btn btn-primary">Search</button>
+        <input type="text" class="form-control" placeholder="Search your book here" formControlName="searchTerm" id="searchTerm"/>
+        <button type="submit" class="btn btn-primary">Search</button>
       </div>
     </form>
