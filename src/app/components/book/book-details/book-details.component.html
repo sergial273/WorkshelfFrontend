@@ -40,7 +40,7 @@
                         <tr>
                           <td>Owner contact</td>
                             <td>
-                              {{ isUserLogged ? book.user.email : 'Log in  to view contact information' }}
+                              {{ isReservedByCurrentUser && !isAvailable ? book.user.email : 'Reserve to view contact information' }}
                             </td>
                           </tr>
                       </tbody>
