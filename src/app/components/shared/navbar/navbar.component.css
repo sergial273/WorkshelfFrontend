@@ -53,6 +53,12 @@ img{
     margin-right: 8px;
 }
 
+
+.custom-bg-light {
+    background-color: #f8f9fa !important;
+  }
+  
+
 @media (max-width: 750px) {
     .navbar-toggler {
         border: none;
@@ -64,6 +70,18 @@ img{
 
     .navbar-nav .nav-item a:hover {
         color: #007bff;
+    }
+
+    .navbar-nav .nav-item a,
+    .navbar-nav .nav-item button {
+        color: black;
+    }
+
+    .custom-dropdown {
+        background: rgb(247, 245, 245) !important;
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px rgb(199, 198, 198) solid;
     }
 }
 

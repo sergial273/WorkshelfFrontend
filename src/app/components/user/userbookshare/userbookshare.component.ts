@@ -29,16 +29,13 @@ export class UserbookshareComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Obtener el parámetro de la ruta
-    console.log('entramos a ngonint');
     this.route.url.subscribe((segments) => {
-      // Verificar si la ruta corresponde a 'userbooklist'
-      if (segments.some((segment) => segment.path === 'userbooklist')) {
+      if (segments.some((segment) => segment.path === 'userbookshare')) {
         console.log('userbooklist');
         const userId = this.tokenStorage.getUser();
         this.reservationService.getBookSharing(userId).subscribe(
           (reservations: any) => {
-            console.log('Reservations for user: ', this.reservations);
+            console.log(this.reservations);
             this.reservations = reservations;
           },
           (error) => {
@@ -55,6 +52,7 @@ export class UserbookshareComponent implements OnInit {
             this.reservationService.getReservationsByBook(book).subscribe(
               (reservations: any) => {
                 this.reservations = reservations;
+                console.log(reservations);
               },
               (error) => {
                 console.error('Error fetching reservations for book: ', error);
