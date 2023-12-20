@@ -72,8 +72,8 @@ h6 span {
     width: 36px;
     height: 36px;
     border-radius: 50%;
-    color: #102770;
-    background-color: #cabac2;
+    color: whitesmoke;
+    background-color: #102770;
     font-family: 'unicons';
     content: '\eb4f';
     z-index: 20;
@@ -119,7 +119,7 @@ h6 span {
     background-position: bottom center;
     background-repeat: no-repeat;
     background-size: 300%;
-    background-color: #f2f2f2; 
+    background-color: #f252a7; 
     box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2), 0 6px 20px 0 rgba(21, 21, 21, .1);
     position: absolute;
     border-radius: 6px;
@@ -135,7 +135,7 @@ h6 span {
 
 .card-back {
     transform: rotateY(180deg);
-    background-color: #f2f2f2; 
+    background-color: orange; 
     box-shadow: 0 4px 8px 0 rgba(21, 21, 21, .2), 0 6px 20px 0 rgba(21, 21, 21, .1);
 }
 
