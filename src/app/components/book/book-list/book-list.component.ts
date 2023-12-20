@@ -18,7 +18,7 @@ export class BookListComponent implements OnInit {
 
   books: Book[] = [];
 
-  genres: string[] = ['Adventure', 'Mystery', 'Science Fiction', 'Romance', 'Classic', 'Magical Realism']
+  genres: string[] = ['Adventure', 'Mystery', 'Science Fiction', 'Romance', 'Classic', 'Magical Realism', 'Thriller', 'Horror']
   selectedGenres: string[] = [];
 
   constructor(private bookservice: BookserviceService, private router: Router) { }
