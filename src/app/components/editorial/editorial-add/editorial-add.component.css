@@ -22,6 +22,14 @@
 }
 
 .btn-primary:hover {
+    background-color: #ff3385;
+}
+
+.btn-primary:active {
+    background-color: #a7004e;
+}
+
+.btn-primary:hover {
     font-weight: bold;
     background-color: #741240;    
     border-color: #741240;

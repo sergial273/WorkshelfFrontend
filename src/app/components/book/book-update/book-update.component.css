@@ -1,0 +1,48 @@
+body{
+    display: flex;
+    height: 100vh;
+}   
+
+.book-card {
+    background-color: #f8f9fa; 
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+}
+
+.book-card:hover {
+    background-color: #e2e6ea;
+}
+
+.card-header {
+    background-color: #e20074;
+    color: #fff;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.btn-primary {
+    font-weight: bold;
+    background-color: #e20074;
+    border-color: #6d3954;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+    background-color: #741240;    
+    border-color: #741240;
+}
+
+.d-grid {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0px;
+}
+
+.btn-primary:hover {
+    background-color: #ff3385;
+}
+
+.btn-primary:active {
+    background-color: #a7004e;
+}
