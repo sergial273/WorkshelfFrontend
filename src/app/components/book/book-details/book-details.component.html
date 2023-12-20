@@ -54,6 +54,7 @@
                           <button class="btn btn-primary btn-sm my-2 w-100" data-type="theme" [attr.data-id]="book.id" (click)="returnBook(book)">Return</button>
                           @if (canComment) {
                             <button class="btn btn-primary btn-sm my-2 w-100" data-type="theme" [attr.data-id]="book.id" (click)="rateBook(book)">Rate</button>
+                            <div class="text-danger mt-2">Do not forget to rate the reservation before pressing 'Return' button. Once you press 'Return' you cannot rate it!</div>
                           }
                         }
                       }
