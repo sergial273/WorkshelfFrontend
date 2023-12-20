@@ -12,7 +12,9 @@ import { EditorialService } from '../../../_services/editorial/editorial.service
 })
 export class EditorialAddComponent {
 
-  form: FormGroup; 
+  form: FormGroup;
+
+  invis: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -20,21 +22,35 @@ export class EditorialAddComponent {
     private editorialService: EditorialService,
   ) {
     this.form = this.formBuilder.group({
-      searchTerm: [null],
+      editorialName: [null, Validators.required],
     });
   }
 
-  onSubmit() {
-    const formData = this.form.value;
+onSubmit() {
+  const editorialNameControl = this.form.get('editorialName');
 
-    this.editorialService.addEditorial(formData).subscribe(
-      response => {
-        console.log('Result:', response);
-        this.router.navigate(['/']);
-      },
-      error => {
-        console.error('Error:', error);
-      }
-    );
+  if (!editorialNameControl) {
+    console.error('editorialName control is null');
+    return;
   }
+
+  const trimmedValue = editorialNameControl.value ? editorialNameControl.value.trim() : '';
+
+  if (trimmedValue === '') {
+    console.log('Search term is required');
+    this.invis = true;
+    return;
+  }
+
+  const formData = this.form.value;
+  this.editorialService.addEditorial(formData).subscribe(
+    response => {
+      console.log('Result:', response);
+      this.router.navigate(['/']);
+    },
+    error => {
+      console.error('Error:', error);
+    }
+  );
+}
 }
