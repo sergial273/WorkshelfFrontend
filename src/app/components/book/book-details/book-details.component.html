@@ -40,12 +40,6 @@
                     Reservation status:
                     <span class="text-merriweather">Reserved</span>
                   </p>
-                  <p class="text-spacey">
-                    Reservation until:
-                    <span class="text-merriweather">{{
-                      book.reservationDuration | date
-                    }}</span>
-                  </p>
                   } @else if (book.reserved === 2) {
                   <p class="text-spacey">
                     Reservation status:
