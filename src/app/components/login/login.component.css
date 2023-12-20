@@ -135,7 +135,7 @@ h6 span {
 
 .card-back {
     transform: rotateY(180deg);
-    background-color: white;
+    background-color: #fadbeb;
     box-shadow: 2px 4px 8px 2px #e20074, 4px 4px 8px 4px rgba(21, 21, 21, .1), 0 0 20px rgba(0, 0, 0, 0.3); 
 }
 
@@ -311,5 +311,9 @@ h6 span {
 }
 
 .btn-dark {
-    margin-top: 50px;
+    margin-top: 20px;
+}
+
+.text-danger {
+    height: 20px;
 }

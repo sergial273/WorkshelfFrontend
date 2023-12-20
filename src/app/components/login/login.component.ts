@@ -54,7 +54,6 @@ export class LoginComponent implements OnInit {
   async onSubmitLogin(): Promise<void> {
 
     if (!this.form.username || !this.form.password) {
-      console.log('All fields are required');
       this.invisLogin = true;
       return;
     }
@@ -82,7 +81,6 @@ export class LoginComponent implements OnInit {
   onSubmitReg(): void {
 
     if (!this.formReg.username || !this.formReg.email || !this.formReg.password) {
-      console.log('All fields are required');
       this.invis = true;
       return;
     }
