@@ -10,7 +10,7 @@
     </button>
 
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav custom-dropdown">
         <li class="nav-item">
           <a class="nav-link" routerLink="/book/list">
             <i class="bi fs-5 bi-journals"></i>
@@ -19,27 +19,27 @@
         </li>
 
         @if(isRegistered()) {
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="newDropdown" role="button" data-bs-toggle="dropdown"
-            aria-expanded="false">
-            <i class="bi fs-5 bi-plus-circle-dotted"></i>
-            New
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="newDropdown">
-            <li>
-              <a class="dropdown-item" routerLink="/editorial/add">
-                <i class="bi bi-journal-plus"></i>
-                New Publisher
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" routerLink="/book/add">
-                <i class="bi bi-book"></i>
-                New Book
-              </a>
-            </li>
-          </ul>
-        </li>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="newDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="bi fs-5 bi-plus-circle-dotted"></i>
+              New
+            </a>
+            <ul class="dropdown-menu custom-bg-light" aria-labelledby="newDropdown"> <!-- Agrega la clase bg-light aquí -->
+              <li>
+                <a class="dropdown-item" routerLink="/editorial/add">
+                  <i class="bi bi-journal-plus"></i>
+                  New Publisher
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/book/add">
+                  <i class="bi bi-book"></i>
+                  New Book
+                </a>
+              </li>
+            </ul>
+          </li>
+          
         }
 
         <li class="nav-item">
