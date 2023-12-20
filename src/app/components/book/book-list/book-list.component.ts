@@ -100,6 +100,7 @@ export class BookListComponent implements OnInit {
     const formData = this.form.value;
     const searchTermValue = formData.searchTerm;
 
+    this.uncheckAllCheckboxes();
 
     this.bookservice.getBooksBySearchTitle(searchTermValue, this.currentPage, this.pageSize).subscribe((books) => {
       this.books = books;
@@ -107,5 +108,16 @@ export class BookListComponent implements OnInit {
     (error) => {
       this.books = [];
     });
+  }
+
+  uncheckAllCheckboxes() {
+    this.genres.forEach(genre => {
+      const checkbox = document.getElementById('chk' + genre) as HTMLInputElement;
+      if (checkbox) {
+        checkbox.checked = false;
+      }
+    });
+  
+    this.selectedGenres = [];
   }
 }
