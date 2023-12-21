@@ -25,13 +25,13 @@
               New
             </a>
             <ul class="dropdown-menu custom-bg-light" aria-labelledby="newDropdown">
-              <li>
+              <li class="dropdown-list-item">
                 <a class="dropdown-item"  routerLink="/editorial/add">
                   <i class="bi bi-journal-plus"></i>
                   New Publisher
                 </a>
               </li>
-              <li>
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/book/add">
                   <i class="bi bi-book"></i>
                   New Book
@@ -51,39 +51,39 @@
               {{ user.username }}
             </a>
             <ul class="dropdown-menu custom-bg-light" aria-labelledby="dropdownMenuButton1">
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/userbooklist">
                   <i class="bi bi-book-half"></i>
                   My Books
                 </a>
               </li>
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/userreservations">
                   <i class="bi bi-journal-check"></i>
                   My Reservations
                 </a>
               </li>
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/userbookshare">
                   <i class="bi bi-journal-arrow-up"></i>
                   My Book Sharing History
                 </a>
               </li>
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/user">
                   <i class="bi bi-person"></i>
                   Profile
                 </a>
               </li>
               @if (isAdmin()) {
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" (click)="isAdmin()" routerLink="/admin">
                   <i class="bi bi-person-gear"></i>                  
                   Admin Panel
                 </a>
               </li>
               }
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="" (click)="logout()">
                   <i class="bi bi-door-closed-fill"></i>
                   Log Out

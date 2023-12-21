@@ -39,12 +39,18 @@ body{
     border-color: #741240;
 }
 
-.d-grid {
+.button-form {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     margin: 0px;
+}
+
+@media (max-width: 987px) {
+    .button-form {
+        justify-content: center !important;
+    }
 }
 
 
