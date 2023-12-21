@@ -60,25 +60,22 @@ export class LoginComponent implements OnInit {
       this.invisLogin = true;
       return;
     }
-
-    this.loading = true;
     const { username, password } = this.form;
     const data: any = await this.authService.login(username, password).toPromise();
 
     setTimeout(async () => {
       try {
         this.tokenStorage.saveToken(data);
-        console.log("printing", this.loading)
         await this.tokenStorage.saveUser(username);
         this.roles = this.tokenStorage.getUser().role;
         this.tokenStorage.saveRoles(this.roles);
-        this.isLoginFailed = false;
         this.isLoggedIn = true;
+        this.isLoginFailed = false;
+        this.loading = true;
         this.router.navigate(['/']);
       } catch (err: any) {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
-      } finally {
         this.loading = false;
       }
     }, 1000);
