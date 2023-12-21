@@ -1,9 +1,9 @@
 <div class="section">
   <div class="container">
-    <div class="row full-height justify-content-center">
-      <div class="col-12 text-center align-self-center py-5">
-        <div class="section pb-5 pt-5 pt-sm-2 text-center">
-          <h6 class="mb-0 pb-3"><span>LOG IN</span><span>SIGN UP</span></h6>
+    <div class="row full-height  justify-content-start">
+      <div class="col-12 text-center align-self-start py-5">
+        <div class="section pb-5 pt-1 pt-sm-2 text-center">
+          <img src="../../../assets/images/loginsignup.jpg" alt="loginOrSignUp" class="imageTitle" height="220px" width="375px">
           <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" />
           <label for="reg-log"></label>
           @if (loading) {
@@ -17,36 +17,26 @@
                 <div class="center-wrap">
                   <div class="section text-center">
                     <img src="../../../assets/images/login.jpg" alt="Login" height="110px" width="160px">
-                    @if (!isLoggedIn) {
+                    @if (!isLoggedIn){
                       <form name="form" #f="ngForm" class="mx-1 mx-md-4">
                         <div class="form-group">
                           <input type="email" name="username" [(ngModel)]="form.username" #username="ngModel" class="form-control" placeholder="Your Email" id="form3Example3c"
                             autocomplete="off">
-                            @if (invisLogin) {
-                              <div class="text-danger mt-2">Username is required</div>
-                          }
+                          <div class="text-danger {{ invisLogin ? 'visible' : 'invisible' }} mb-2">Username is required</div>
+
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-2">
                           <input type="password" name="password" [(ngModel)]="form.password" #password="ngModel" class="form-control" placeholder="Your Password" id="form3Example3c"
                             autocomplete="off">
-                            @if (invisLogin) {
-                              <div class="text-danger mt-2">Password is required</div>
-                          }
+                              <div class="text-danger {{ invisLogin ? 'visible' : 'invisible' }} mb-2">Password is required</div>
                           <i class="input-icon uil uil-lock-alt"></i>
-                        </div>
-
-                        @if (f.submitted && isLoginFailed) {
-                          <div class="form-group">
-                            <div class="alert alert-danger" role="alert">
-                              Login failed: {{ errorMessage}}
-                              @if (isLoginFailed) {
-                                <div class="text-danger mt-2">Wrong credentials</div>
-                              }
+                          @if (isLoginFailed) {                           
+                              <div class="alert alert-danger mt-2" role="alert">
+                                <div class="text-danger m-0">Wrong credentials</div>
                             </div>
-                          </div>
-                        }
-                        
+                          }
+                        </div>
                         @if (isLoggedIn) {
                           <div class="form-group">
                             <div class="alert alert-success" role="alert">
@@ -68,23 +58,17 @@
                       <form name="formReg" #f="ngForm" class="mx-1 mx-md-4" (ngSubmit)="onSubmitReg()">
                         <div class="form-group">
                           <input type="text" id="form3Example1c" placeholder="Your Username" name="username" [(ngModel)]="formReg.username" #username="ngModel" class="form-control" autocomplete="off">
-                          @if (f.submitted && !formReg.username) {
-                            <div class="text-danger mt-1">Username is required</div>
-                          }
+                          <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Username is required</div>
                           <i class="input-icon uil uil-user"></i>
                         </div>
                         <div class="form-group mt-1">
                           <input type="email" id="form3Example3c" placeholder="Your Email" name="email" [(ngModel)]="formReg.email" #email="ngModel" class="form-control" autocomplete="off">
-                          @if (f.submitted && !formReg.email) {
-                            <div class="text-danger mt-2">Email is required</div>
-                          }
+                          <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Email is required</div>
                           <i class="input-icon uil uil-at"></i>
                         </div>
                         <div class="form-group mt-1">
                           <input type="password" id="form3Example4c" placeholder="Your Password" name="password" [(ngModel)]="formReg.password" #password="ngModel" class="form-control" autocomplete="off">
-                          @if (f.submitted && !formReg.password) {
-                            <div class="text-danger mt-1 mb-0">Password is required</div>
-                          }
+                          <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Password is required</div>
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
                         <button type="submit" class="btn btn-dark btn-lg">Register</button>
