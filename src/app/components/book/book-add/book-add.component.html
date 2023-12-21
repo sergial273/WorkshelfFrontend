@@ -10,23 +10,17 @@
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
                             <input type="text" class="form-control" id="title" formControlName="title" required>
-                            @if (invis) {
-                                <div class="text-danger mt-2">Title is required</div>
-                            }
+                            <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Title is required</div>
                         </div>
                         <div class="mb-3">
                             <label for="image" class="form-label">Image URL</label>
                             <input type="text" class="form-control" id="image" formControlName="image" required>
-                            @if (invis) {
-                                <div class="text-danger mt-2">Image is required</div>
-                            }
+                            <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Image is required</div>
                         </div>
                         <div class="mb-3">
                             <label for="author" class="form-label">Author</label>
                             <input type="text" class="form-control" id="author" formControlName="author" required>
-                            @if (invis) {
-                                <div class="text-danger mt-2">Author is required</div>
-                            }
+                            <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Author is required</div>
                         </div>
                         <div class="mb-3">
                             <label for="genre" class="form-label">Genre</label>
@@ -42,17 +36,13 @@
                                 <option value="Thriller">Thriller</option>
                                 <option value="Horror">Horror</option>
                             </select>
-                            @if (invis) {
-                                <div class="text-danger mt-2">Genre is required</div>
-                            }
+                            <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Genre is required</div>
                         </div>
                         <div class="mb-3">
                             <label for="reservationDuration" class="form-label">Reservation Duration (days)</label>
                             <input type="number" class="form-control" id="reservationDuration"
                                 formControlName="reservationDuration" min="1" max="7" required>
-                                @if (invis) {
-                                    <div class="text-danger mt-2">Duration of the reservation is required</div>
-                                }
+                                <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Reservation duration is required</div>
                         </div>
                         <div class="mb-3">
                             <label for="editorial" class="form-label">Publisher</label>
@@ -61,9 +51,7 @@
                                 <option [value]="editorial.id">{{ editorial.editorialName }}</option>
                                 }
                             </select>
-                            @if (invis) {
-                                <div class="text-danger mt-2">Publisher is required</div>
-                            }
+                            <div class="text-danger {{ invis ? 'visible' : 'invisible' }} mb-2">Publisher is required</div>
                         </div>
                         <div class="d-grid">
                             <button type="submit" class="btn btn-primary btn-sm">CREATE</button>
