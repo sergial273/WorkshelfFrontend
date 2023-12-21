@@ -104,10 +104,8 @@ button {
   border-bottom-left-radius: 0;
 }
 
-
-
 .input-group button:focus {
-  box-shadow: 0 0 0 0.2rem #741240;
+  box-shadow: 0 0 0 0.2rem #be0059 !important;
 }
 
 .filter-link {

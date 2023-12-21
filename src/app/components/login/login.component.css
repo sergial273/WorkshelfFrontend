@@ -95,7 +95,7 @@ label {
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     perspective: 800px;
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 .card-3d-wrapper {
@@ -343,5 +343,11 @@ label {
 
     100% {
         transform: scale(1);
+    }
+}
+
+@media (max-width: 767px) {
+    .imageTitle {
+        width: 100%;
     }
 }
