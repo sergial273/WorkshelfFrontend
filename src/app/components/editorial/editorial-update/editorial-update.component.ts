@@ -15,6 +15,7 @@ export class EditorialUpdateComponent {
   
   form: FormGroup; 
   editorial: any;
+  invis: boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -65,9 +66,16 @@ export class EditorialUpdateComponent {
   }
 
   onSubmit() {
-    const formData = this.form.value;
+    const editorialNameControl = this.form.get('editorialName');
 
-    this.editorialService.udateEditorial(this.editorial.id, formData).subscribe(
+    if (!editorialNameControl) {
+      console.error('editorialName control is null');
+      return;
+    }
+  
+
+    const formData = this.form.value;
+    this.editorialService.addEditorial(formData).subscribe(
       response => {
         console.log('Result:', response);
         this.router.navigate(['/']);
@@ -77,5 +85,4 @@ export class EditorialUpdateComponent {
       }
     );
   }
-
 }

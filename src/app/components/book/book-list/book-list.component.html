@@ -2,7 +2,7 @@
     <form class="mb-3 search-form mt-3" [formGroup]="form" (ngSubmit)="onSubmit()" >
         <div class="input-group">
             <input type="text" class="form-control" placeholder="Search your book here" formControlName="searchTerm" id="searchTerm"/>
-            <button type="submit" class="btn btn-primary">Search</button>
+            <button type="submit" class="btn btn-primary"><img src="../../../assets/images/search.gif" alt="searchIcon" height="30px" width="30px"></button>
         </div>
 
     </form>
@@ -46,11 +46,11 @@
         </div>
         <div class="d-flex justify-content-center mt-3 mb-5">
             <div class="pageButtons">
-                <button type="button" class="btn btn-primary me-2" (click)="previousPage()">Previous</button>
+                <button type="button" class="btn btn-primary me-2" (click)="previousPage()"><i class="bi bi-arrow-left"></i></button>
             </div>
             <span class="align-self-center">{{ currentPage }}</span>
             <div class="pageButtons">
-                <button type="button" class="btn btn-primary ms-2" (click)="nextPage()">Next</button>
+                <button type="button" class="btn btn-primary ms-2" (click)="nextPage()"><i class="bi bi-arrow-right"></i></button>
             </div>
         </div>
     </div>

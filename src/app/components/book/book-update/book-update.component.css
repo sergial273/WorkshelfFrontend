@@ -31,10 +31,9 @@ body{
     border-color: #741240;
 }
 
-.d-grid {
+.button-form {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
     text-align: center;
     margin: 0px;
 }
@@ -45,4 +44,10 @@ body{
 
 .btn-primary:active {
     background-color: #a7004e;
+}
+
+@media (max-width: 987px) {
+    .button-form {
+        justify-content: center !important;
+    }
 }

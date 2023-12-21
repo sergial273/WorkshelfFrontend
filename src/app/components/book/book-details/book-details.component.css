@@ -64,7 +64,6 @@
 
 .empty-star {
     color: gray;
-
 }
 
 .book-card {
@@ -111,4 +110,10 @@
 
 .btn-primary:active {
     background-color: #a7004e;
+}
+
+@media (max-width: 767px) {
+    .book-detail-title {
+        font-size: 35px !important;
+    }
 }

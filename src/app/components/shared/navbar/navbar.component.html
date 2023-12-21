@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-magenta navbar-dark bg-dark sticky-top">
   <div class="container">
     <a class="navbar-brand d-flex align-items-center" routerLink="/">
-      <img src="../../../../assets/images/logo.jpg" alt="Logo" height="50" width="50">
+      <img src="../../../../assets/images/workshelf.jpg" alt="Logo" height="30" width="175">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -24,14 +24,14 @@
               <i class="bi fs-5 bi-plus-circle-dotted"></i>
               New
             </a>
-            <ul class="dropdown-menu custom-bg-light" aria-labelledby="newDropdown"> <!-- Agrega la clase bg-light aquí -->
-              <li>
-                <a class="dropdown-item" routerLink="/editorial/add">
+            <ul class="dropdown-menu custom-bg-light" aria-labelledby="newDropdown">
+              <li class="dropdown-list-item">
+                <a class="dropdown-item"  routerLink="/editorial/add">
                   <i class="bi bi-journal-plus"></i>
                   New Publisher
                 </a>
               </li>
-              <li>
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/book/add">
                   <i class="bi bi-book"></i>
                   New Book
@@ -51,39 +51,39 @@
               {{ user.username }}
             </a>
             <ul class="dropdown-menu custom-bg-light" aria-labelledby="dropdownMenuButton1">
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/userbooklist">
                   <i class="bi bi-book-half"></i>
                   My Books
                 </a>
               </li>
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/userreservations">
                   <i class="bi bi-journal-check"></i>
                   My Reservations
                 </a>
               </li>
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/userbookshare">
                   <i class="bi bi-journal-arrow-up"></i>
                   My Book Sharing History
                 </a>
               </li>
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="/user">
                   <i class="bi bi-person"></i>
                   Profile
                 </a>
               </li>
               @if (isAdmin()) {
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" (click)="isAdmin()" routerLink="/admin">
                   <i class="bi bi-person-gear"></i>                  
                   Admin Panel
                 </a>
               </li>
               }
-              <li class="">
+              <li class="dropdown-list-item">
                 <a class="dropdown-item" routerLink="" (click)="logout()">
                   <i class="bi bi-door-closed-fill"></i>
                   Log Out

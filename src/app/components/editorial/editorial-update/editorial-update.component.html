@@ -1,14 +1,26 @@
-<div class="container mt-3 mb-5">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <h2>Create an Editorial</h2>
-            <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mx-1 mx-md-4">
-                <div class="mb-3 mt-3">
-                    <label for="editorialName" class="form-label">Editorial name</label>
-                    <input type="text" class="form-control" id="editorialName" formControlName="editorialName" required>
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card editorial-card">
+                <div class="card-header">
+                    <h2 class="text-center">Update Publisher</h2>
                 </div>
-                <button type="submit" class="btn btn-primary">Create Book</button>
-            </form>
+                <div class="card-body">
+                    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="mx-1 mx-md-4">
+                        <div class="mb-3">
+                            <label for="editorialName" class="form-label">Tell us it's name</label>
+                            <input type="text" class="form-control small-input" id="editorialName"
+                                formControlName="editorialName" required>
+                            @if (invis) {
+                                <div class="text-danger mt-2">Name is required</div>
+                            }
+                        </div>
+                        <div class="button-form">
+                            <button type="submit" class="btn btn-primary btn-sm">CREATE</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 </div>
