@@ -63,7 +63,9 @@
                         }
                       </div>
                     }
-                    <div class="text-danger text-center mt-2">Do not forget to rate the reservation before pressing 'RETURN' button. Once you press 'RETURN' you cannot rate it!</div>
+                    @if (canComment) {
+                      <div class="text-danger text-center mt-2">Do not forget to rate the reservation before pressing 'RETURN' button. Once you press 'RETURN' you cannot rate it!</div>
+                    }
                   </div>
                 </div>
             </div>
