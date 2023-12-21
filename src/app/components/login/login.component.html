@@ -36,11 +36,11 @@
                           <i class="input-icon uil uil-lock-alt"></i>
                         </div>
 
-                        @if (f.submitted && isLoginFailed) {
+                        @if (isLoginFailed === true) {
                           <div class="form-group">
                             <div class="alert alert-danger" role="alert">
                               Login failed: {{ errorMessage}}
-                              @if (isLoginFailed) {
+                              @if (isLoginFailed === true) {
                                 <div class="text-danger mt-2">Wrong credentials</div>
                               }
                             </div>
