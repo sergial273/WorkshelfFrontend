@@ -56,24 +56,19 @@ img{
 
 .custom-bg-light {
     background-color: #f8f9fa !important;
-  }
-  
+}
+
+.dropdown-menu .dropdown-list-item:hover a,
+.dropdown-menu .dropdown-list-item .active {
+    background: #e4e3e3;
+}
 
 @media (max-width: 987px) {
     .navbar-toggler {
         border: none;
     }
-
-    .navbar .navbar-toggler-icon {
-        margin-bottom: 15px;
-    }
-
     .navbar-nav .nav-item {
         text-align: center;
-    }
-
-    .navbar-nav .nav-item a:hover {
-        color: #007bff;
     }
 
     .navbar-nav .nav-item a,
