@@ -5,6 +5,7 @@ import { TokenStorageService } from '../../_services/token-storage.service';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { JsonPipe } from '@angular/common';
+import { clippingParents } from '@popperjs/core';
 
 @Component({
   selector: 'app-login',
@@ -13,17 +14,20 @@ import { JsonPipe } from '@angular/common';
   templateUrl: './login.component.html',
   styleUrl: './login.component.css',
 })
-
 export class LoginComponent implements OnInit {
-
   form: any = {
     username: null,
     password: null,
   };
 
-  loading = false;
+  invis: boolean = false;
+  invisLogin: boolean = false;
+  loading: boolean = false;
   isLoggedIn = false;
   isLoginFailed = false;
+  isSuccessful = false;
+  isSignUpFailed = false;
+  errorMessageReg = '';
   errorMessage = '';
   roles: string[] = [];
 
@@ -33,21 +37,16 @@ export class LoginComponent implements OnInit {
     password: null,
   };
 
-  invis: boolean = false;
-  invisLogin: boolean = false;
-
-  isSuccessful = false;
-  isSignUpFailed = false;
-  errorMessageReg = '';
-
   constructor(
     private authService: AuthService,
     private tokenStorage: TokenStorageService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    if (this.tokenStorage.getToken()) {
+    this.isLoggedIn = false;
+
+    if (this.tokenStorage.getToken() != null) {
       this.isLoggedIn = true;
       this.roles;
       this.tokenStorage.getUser().roles;
@@ -55,33 +54,40 @@ export class LoginComponent implements OnInit {
   }
 
   async onSubmitLogin(): Promise<void> {
-
     if (!this.form.username || !this.form.password) {
       this.invisLogin = true;
       return;
     }
 
-    this.loading = true;
     const { username, password } = this.form;
-    const data: any = await this.authService.login(username, password).toPromise();
 
     setTimeout(async () => {
       try {
+        const data: any = await this.authService
+          .login(username, password)
+          .toPromise();
+        this.isLoggedIn = true;
         this.tokenStorage.saveToken(data);
-        console.log("printing", this.loading)
+
+        if (this.tokenStorage.getToken() == null) {
+          this.isLoginFailed = false;
+        }
         await this.tokenStorage.saveUser(username);
         this.roles = this.tokenStorage.getUser().role;
         this.tokenStorage.saveRoles(this.roles);
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.router.navigate(['/']);
-      } catch (err: any) {
-        this.errorMessage = err.error.message;
+      } catch (error) {
         this.isLoginFailed = true;
       } finally {
         this.loading = false;
       }
     }, 1000);
+    this.loading = true;
+
+    try {
+    } catch (err: any) {}
   }
 
   reloadPage(): void {
@@ -89,8 +95,11 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmitReg(): void {
-
-    if (!this.formReg.username || !this.formReg.email || !this.formReg.password) {
+    if (
+      !this.formReg.username ||
+      !this.formReg.email ||
+      !this.formReg.password
+    ) {
       this.invis = true;
       return;
     }
@@ -99,18 +108,21 @@ export class LoginComponent implements OnInit {
 
     this.loading = true;
 
-    this.authService.register(username, email, password).subscribe(
-      (data: any) => {
-        this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        this.router.navigate(['/login']);
-      },
-      (err: any) => {
-        this.errorMessageReg = err.error.message;
-        this.isSignUpFailed = true;
-      }
-    ).add(() => {
-      this.loading = false;
-    });
+    this.authService
+      .register(username, email, password)
+      .subscribe(
+        (data: any) => {
+          this.isSuccessful = true;
+          this.isSignUpFailed = false;
+          this.router.navigate(['/login']);
+        },
+        (err: any) => {
+          this.errorMessageReg = err.error.message;
+          this.isSignUpFailed = true;
+        }
+      )
+      .add(() => {
+        this.loading = false;
+      });
   }
 }

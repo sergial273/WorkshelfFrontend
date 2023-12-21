@@ -8,6 +8,7 @@ import { Router, RouterLink } from '@angular/router';
 import { Book } from '../../models/book/book.model';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { animate, state, style, transition, trigger } from '@angular/animations';
 
 @Component({
     selector: 'app-home',
@@ -20,23 +21,23 @@ export class HomeComponent implements OnInit {
 
     books: Book[] = [];
 
-    form: FormGroup; 
+    form: FormGroup;
 
     constructor(private bookservice: BookserviceService, private router: Router, private formBuilder: FormBuilder) {
         this.form = this.formBuilder.group({
             searchTerm: [null],
-          });
-     }
+        });
+    }
 
     ngOnInit(): void {
     }
 
-    onSubmit(){
+    onSubmit() {
         const formData = this.form.value;
         const searchTermValue = formData.searchTerm;
-        
-        this.router.navigateByUrl('/book/list/'+searchTermValue);
-        
-      }
+
+        this.router.navigateByUrl('/book/list/' + searchTermValue);
+
+    }
 
 }
